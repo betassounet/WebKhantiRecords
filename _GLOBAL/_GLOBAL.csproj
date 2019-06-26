@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{5C64F863-574A-4F83-A80C-D7B7D9061C80}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>_GLOBAL</RootNamespace>
+    <AssemblyName>_GLOBAL</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ExcelPackage, Version=1.0.0.1, Culture=neutral, PublicKeyToken=f8bb63aa9d6969e8, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>_dll\ExcelPackage.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\ORPHEAWeb\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.ServiceProcess" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="globalModels\ConfigsClients\ConfigDataClient.cs" />
+    <Compile Include="globalModels\ConfigsClients\ConfigDataInput.cs" />
+    <Compile Include="globalModels\ConfigsClients\ConfigDataInputExcel.cs" />
+    <Compile Include="globalModels\ConfigsClients\ConfigDataVariables.cs" />
+    <Compile Include="globalModels\ConfigsClients\ConfigEnvironnementClient.cs" />
+    <Compile Include="globalModels\ConfigsClients\ConfigExtraParamClient.cs" />
+    <Compile Include="globalModels\ConfigsClients\ConfigGlobalVariable.cs" />
+    <Compile Include="globalModels\ConfigsClients\ConfigImpression.cs" />
+    <Compile Include="globalModels\ConfigsClients\ConfigTodoList.cs" />
+    <Compile Include="globalModels\ConfigsClients\ScenarioData.cs" />
+    <Compile Include="globalModels\SessionConfigXml\ConfigEnvironnementSession.cs" />
+    <Compile Include="globalModels\SqlTransact\ModelSqlTransact.cs" />
+    <Compile Include="globalModels\WebApiCalls\Models.All.cs" />
+    <Compile Include="globalModels\WebApiCalls\Models.DalProcess.cs" />
+    <Compile Include="globalModels\WebApiCalls\SeeToPublish.cs" />
+    <Compile Include="Log\GlobalLog.cs" />
+    <Compile Include="Log\LogFileDebug.cs" />
+    <Compile Include="Log\SingleLogFileAsXml.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SessionAndConfig\SingleSessionConfig.cs" />
+    <Compile Include="SessionAndConfig\SingleSessionConfig.InitFiles.cs" />
+    <Compile Include="SessionAndConfig\SingleSessionConfig.WebApi.cs" />
+    <Compile Include="Utils\Excel\SingleExcel.cs" />
+    <Compile Include="Utils\Json\UtilJson.cs" />
+    <Compile Include="Utils\Performance\SinglePerformanceLogger.cs" />
+    <Compile Include="Utils\BDD\AnalyseTableSQL.Transact.cs" />
+    <Compile Include="Utils\BDD\ModeleStatutBDD.cs" />
+    <Compile Include="Utils\BDD\StaticEntityConnectionStringBuilder.cs" />
+    <Compile Include="Utils\Serialisation\FastSerialisation.cs" />
+    <Compile Include="Utils\Serialisation\Serialisation.cs" />
+    <Compile Include="Utils\Services\SingleGestionServiceWindows.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="globalModels\_LisezMoi.txt" />
+    <Content Include="_dll\ExcelPackage.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

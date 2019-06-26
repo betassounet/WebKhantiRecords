@@ -1,0 +1,84 @@
+﻿<div>
+    <h3>{{Bonjour}}</h3>
+
+    <uib-accordion>
+        <div uib-accordion-group class="panel-default">
+            <uib-accordion-heading>
+
+                <div class="row">
+                    <div class="col-md-10">
+                        <div ng-show="ConfigFiles.environnementProjet.IsClientSelectedOK">
+                            <h3>Client Selected : {{ConfigFiles.environnementProjet.ClientName}}</h3>
+                        </div>
+                        <div ng-hide="ConfigFiles.environnementProjet.IsClientSelectedOK">
+                            <h3>No Client Selected : Default dev config </h3>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <span class="glyphicon glyphicon-cog" style="color: black; margin-right: 10px"></span>
+                    </div>
+                </div>
+            </uib-accordion-heading>
+            <div ng-hide="ConfigFiles.environnementProjet.IsClientSelectedOK">
+                <h3>No Client Selected : Default dev config </h3>
+                <button class="btn btn-warning" data-ng-click="ActionOnConfigEnvironnementSession('SetNewClient', newClientName)">Add New Client repository</button>
+                <input type="text" placeholder="New client Name" ng-model="newClientName">
+            </div>
+            <hr/>
+            <pre>
+{{ConfigFiles | json}}
+       
+</pre>            
+
+
+        </div>
+    </uib-accordion>
+
+    <hr/>
+
+    <!--La on passe par une directive obj-edit pour faire fonctionner le text area en binding 2 ways avec le scope..-->
+    <!-------------------------------------------------------------------------------------------------------------
+    ATTENTION
+    ATTENTION.. L'utilisation du textArea a l'interieur de l'accordion fait perdre le binding vers le controler !!
+    ------------------------------------------------------------------------------------------------------------->
+
+    <div ng-cloak>
+        <md-content>
+            <md-tabs md-dynamic-height md-border-bottom>
+                <md-tab label="Default config">
+                    <md-content class="md-padding">
+                        <h4>Config globale ( demarrage )</h4>
+                        <hr />
+                        <div>
+                            <textarea obj-edit obj="ConfigFiles.configEnvironnementSession" style="background: #190707; font-size: 14px; color: #F7FE2E; " cols="100" rows="20"></textarea>
+                        </div>
+                        <hr />
+                        <div>
+                            <button class="btn btn-danger" data-ng-click="ActionOnConfigEnvironnementSession('Set')">UpdateFile</button>
+                        </div>
+                    </md-content>
+                </md-tab>
+                <md-tab label={{conf.LibelleFile}} ng-repeat="conf in ConfigFiles.environnementProjet.listTypeFileConfigNeeded">
+                    <md-content class="md-padding">
+                        <h4>{{ConfigFiles.environnementProjet.ClientName}} : {{conf.LibelleFile}}  ( {{conf.TypeFileConfig}}  -  {{conf.NameFileConfig}} )</h4>
+                        <hr />
+                        <div>
+                            <textarea obj-edit obj="conf.objConfig" style="background: #190707; font-size: 14px; color: #F7FE2E; " cols="100" rows="20"></textarea>
+                        </div>
+                        <hr />
+                        <div>
+                            <button class="btn btn-danger" data-ng-click="ActionFichierConfig(conf.TypeFileConfig,conf.NameFileConfig,conf.objConfig)">UpdateFile</button>
+                        </div>
+                    </md-content>
+                </md-tab>
+            </md-tabs>
+        </md-content>
+    </div>
+
+    <hr/>
+
+    <div>
+        {{LastMessage}}
+    </div>
+
+</div>

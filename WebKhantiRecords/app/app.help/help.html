@@ -1,0 +1,42 @@
+﻿<div>
+    <!--<h3>{{view.titre}}</h3>
+    {{view}}-->
+
+    <div ng-cloak>
+        <md-content>
+            <md-tabs md-dynamic-height md-border-bottom>
+                <!--ATTENTION ng-show, ng-hide ne fonctionne pas avec md-tab , on peut utiliser ng-if -->
+                <md-tab label={{view.pdf}} ng-if="view.showpdf">
+                    <md-content class="md-padding">
+                        <div>
+                            <iframe height="900" width="100%" src="{{view.url2}}"></iframe>
+                        </div>
+                    </md-content>
+                </md-tab>
+                <md-tab label="TODO">
+                    <md-content class="md-padding">
+
+                        <h3>Test codemirror</h3> 
+
+                        <section>
+                            <textarea ui-codemirror="cmOption" ng-model="cmModel"></textarea>
+                            Mode : <select ng-model="mode" ng-options="m for m in modes" ng-change="modeChanged()"></select>
+                        </section>
+
+                    </md-content>
+                </md-tab>
+                <md-tab label="Details">
+                    <md-content class="md-padding">
+                        <div>
+                        <pre>
+                        {{view | json}}
+                        </pre>
+                        </div>
+                    </md-content>
+                </md-tab>
+            </md-tabs>
+        </md-content>
+    </div>
+
+
+</div>

@@ -1,0 +1,60 @@
+﻿<div md-theme="{{'theme-ffl'}}" md-theme-watch>
+    <md-content>
+        <md-toolbar>
+            <div layout="row">
+                <div flex="20">
+                    <h1 class="md-toolbar-tools">NO SQL</h1>
+                </div>
+                <div flex>
+                </div>
+            </div>
+        </md-toolbar>
+
+        <md-tabs md-dynamic-height md-border-bottom>
+            <md-tab>
+                <md-tab-label>
+                    <i class="material-icons md-light">
+                        home
+                    </i>
+                </md-tab-label>
+                <md-tab-body>
+
+                    <h3>tab1 Test</h3>
+
+                    <div>
+                        <button type="button" class="btn btn-danger" data-ng-click="TestNoSQL()">TestNoSQL</button>
+                    </div>
+                    
+                    {{RepTestNoSQL}}
+
+                    <md-divider></md-divider>
+
+                    <div>
+                        <button type="button" class="btn btn-danger" data-ng-click="TestMongoDB('Remove')">TestMongoDB Remove</button>
+                        <button type="button" class="btn btn-danger" data-ng-click="TestMongoDB('Insert')">TestMongoDB Insert</button>
+                    </div>
+
+                    {{RepTestMongoDB}}
+                    
+
+                </md-tab-body>
+
+            </md-tab>
+
+
+            <md-tab>
+                <md-tab-label>
+                    <i class="material-icons md-light">
+                        assessment
+                    </i>
+                </md-tab-label>
+                <md-tab-body>
+
+                    <h3>tab2 Test</h3>
+
+                </md-tab-body>
+            </md-tab>
+        </md-tabs>
+
+    </md-content>
+</div>

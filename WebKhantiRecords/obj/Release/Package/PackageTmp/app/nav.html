@@ -1,0 +1,108 @@
+﻿
+<!--Style suplémentaire a rajouter pour donner plus de profondeur possible aux Menus-->
+<!--Introduction des subMenu : solution qui marche      Faut rajouter du css..
+ voir https://stackoverflow.com/questions/22515963/bootstrap-navbar-sub-dropdowns
+     https://www.bootply.com/123179       Rajout du css pour submenu..      -->
+
+<style>
+    .dropdown-submenu {
+        position: relative;
+    }
+
+        .dropdown-submenu > .dropdown-menu {
+            top: 0;
+            left: 100%;
+            margin-top: -6px;
+            margin-left: -1px;
+            -webkit-border-radius: 0 6px 6px 6px;
+            -moz-border-radius: 0 6px 6px;
+            border-radius: 0 6px 6px 6px;
+        }
+
+        .dropdown-submenu:hover > .dropdown-menu {
+            display: block;
+        }
+
+        .dropdown-submenu > a:after {
+            display: block;
+            content: " ";
+            float: right;
+            width: 0;
+            height: 0;
+            border-color: transparent;
+            border-style: solid;
+            border-width: 5px 0 5px 5px;
+            border-left-color: #ccc;
+            margin-top: 5px;
+            margin-right: -10px;
+        }
+
+        .dropdown-submenu:hover > a:after {
+            border-left-color: #fff;
+        }
+
+        .dropdown-submenu.pull-left {
+            float: none;
+        }
+
+            .dropdown-submenu.pull-left > .dropdown-menu {
+                left: -100%;
+                margin-left: 10px;
+                -webkit-border-radius: 6px 0 6px 6px;
+                -moz-border-radius: 6px 0 6px 6px;
+                border-radius: 6px 0 6px 6px;
+            }
+</style>
+
+
+<header class="clearfix">
+    <nav ng-controller="appCtrl" class="navbar" role="navigation">
+        <div class="container-fluid">
+            <!--Bootstrap, elements in container : container-fluid : pour remplir tout l'ecran-->
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#/">
+
+                    <div layout="row">
+                        <div flex="80">
+                            <img src="{{ImageLogo}}" />
+                        </div>
+                        <div flex>
+                            <span>V1.00</span>
+                        </div>
+                    </div>
+
+                            
+                            
+                </a>
+            </div>
+
+            <div class="navbar-collapse collapse">
+
+                <!--<ul class="nav navbar-nav">
+                    <li><a href="#NoSQLEval"><span class="glyphicon glyphicon-warning-sign" style="color: gray; margin-right: 10px"></span>NoSql Eval</a></li>
+                </ul>-->
+
+
+                <!---------------------------------------------------------------
+            MENU PLUS SUR LA DROITE
+            --------------------------------------------------------------->
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#testKhanti"><span class="glyphicon glyphicon-signal" style="color: gray; margin-right: 10px"></span>Test Analyse File 01</a></li>
+
+                    <li ng-show="passwordMenu=='fred'"><a href="#NoSQLEval"><span class="glyphicon glyphicon-warning-sign" style="color: gray; margin-right: 10px"></span>NoSql Eval</a></li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="">plus <span class="caret"></span> </a>
+                        <ul class="dropdown-menu">
+                            <input type="password" ng-model="passwordMenu" />
+                            <li><a href="#Maintenance"><span class="glyphicon glyphicon-info-sign" style="color: gray; margin-right: 10px"></span>Maintenance</a></li>
+                            <li><a href="#/Config"><span class="glyphicon glyphicon-info-sign" style="color: gray; margin-right: 10px" tooltip="Test recup config pour update.."></span>Config</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#help/true/ArchitectureLogicielle2018.pdf/false/rien"><span class="glyphicon glyphicon-info-sign" style="color: black; margin-right: 10px"></span>Help</a></li>
+                        </ul>
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+    </nav>
+</header>

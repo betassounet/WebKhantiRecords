@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TestXmlLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<listXmlLineLog>
+<XmlLineLog Sender="Demarrage" dt="2019-06-22T12:19:18.9779947+02:00" message="Demarrage de l'application, fichier log vient d'être crée"/>
+<XmlLineLog Sender="Demarrage" dt="2019-06-23T00:58:22.9924007+02:00" message="Demarrage de l'application, fichier log existe deja"/>
+<XmlLineLog Sender="Demarrage" dt="2019-06-25T22:55:33.0848777+02:00" message="Demarrage de l'application, fichier log existe deja"/>
+<XmlLineLog Sender="FastSerialisation" dt="2019-06-25T22:55:33.0868569+02:00" message="File not exist : C:\GIT2019\WebKhantiRecords\WebKhantiRecords\\Files\Repository\GlobalPayLoad.xml"/>
+<XmlLineLog Sender="Demarrage" dt="2019-06-25T22:59:03.1783964+02:00" message="Demarrage de l'application, fichier log existe deja"/>
+<XmlLineLog Sender="FastSerialisation" dt="2019-06-25T22:59:03.1803737+02:00" message="File not exist : C:\GIT2019\WebKhantiRecords\WebKhantiRecords\\Files\Repository\GlobalPayLoad.xml"/>

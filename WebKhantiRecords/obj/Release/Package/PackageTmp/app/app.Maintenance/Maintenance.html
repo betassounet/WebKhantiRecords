@@ -1,0 +1,169 @@
+﻿<style>
+    table {
+        width: 100%;
+    }
+
+    table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+    }
+
+    th, td {
+        padding: 5px;
+        text-align: left;
+    }
+
+    table#t01 tr:nth-child(even) {
+        background-color: #eee;
+    }
+
+    table#t01 tr:nth-child(odd) {
+        background-color: #fff;
+    }
+
+    table#t01 th {
+        background-color: gray;
+        color: white;
+    }
+
+    .tdEntete {
+        writing-mode: vertical-lr;
+        text-orientation: sideways;
+    }
+</style>
+
+
+<div>
+    <h3>{{Bonjour}}</h3>
+
+    <uib-accordion>
+        <div uib-accordion-group class="panel-default">
+            <uib-accordion-heading>
+                Logs
+            </uib-accordion-heading>
+            <div class="row">
+
+                <div class="col-md-3">
+                    <div>
+                        <button type="button" class="btn btn-danger" data-ng-click="GetLogInXml()">Refresh Log</button>
+                    </div>
+                </div>
+
+                <div class="col-md-9">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label>Filtre Sender <input type="checkbox" ng-model="IsFiltreSender"></label>
+                        </div>
+                        <div class="col-md-4" ng-show="IsFiltreSender">
+                            Inclure :
+                            <select ng-model="SenderFiltre">
+                                <option value="">NO FILTRE</option>
+                                <option ng-repeat="option in ReponseGetLogInXml.listSenders" value="{{option}}">{{option}}</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4" ng-show="IsFiltreSender">
+                            Exclure :
+                            <select ng-model="SenderExclureFiltre">
+                                <option value="">NO FILTRE</option>
+                                <option ng-repeat="option in ReponseGetLogInXml.listSenders" value="{{option}}">{{option}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label>Filtre Date <input type="checkbox" ng-model="IsFiltreDate"></label>
+                        </div>
+                        <div class="col-md-4" ng-show="IsFiltreDate">
+                            Dates : {{dtFiltre | date: 'medium'}}
+                        </div>
+                        <div class="col-md-4" ng-show="IsFiltreDate">
+                            <input type="date" class="form-control" uib-datepicker-popup ng-model="dtFiltre" is-open="status.opened" />
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label>Operation sur Log File <input type="checkbox" ng-model="VoirOperationLog"></label>
+                        </div>
+                        <div class="col-md-8" ng-show="VoirOperationLog">
+                            <button type="button" class="btn btn-danger" data-ng-click="OperationLog('Delete')">CopyAndDeleteLog</button>
+                            <button type="button" class="btn btn-danger" data-ng-click="OperationLog('TestLog')">TestLog</button>
+                            <div>
+                                {{ReponseOperationLog.sMessage}}
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <hr />
+
+            <table id="t01">
+                <tr>
+                    <th>Sender</th>
+                    <th>dt</th>
+                    <th>message</th>
+                </tr>
+                <tr ng-repeat="log in ReponseGetLogInXml.listXmlLineLog">
+                    <td>{{log.Sender}}</td>
+                    <td>{{log.dt | date: 'medium'}}</td>
+                    <td>{{log.message}}</td>
+                </tr>
+            </table>
+
+        </div>
+
+        <div uib-accordion-group class="panel-default">
+            <uib-accordion-heading>
+                Performance Log
+            </uib-accordion-heading>
+            <div ng-init="MaxTime=500">
+                <button type="button" class="btn btn-danger" data-ng-click="GetSetPerformanceLogger('NC',0)">GetSetPerformanceLogger</button>
+                <button type="button" class="btn btn-danger" data-ng-click="GetSetPerformanceLogger('Reset',0)">Reset</button>
+                <button type="button" class="btn btn-danger" data-ng-click="GetSetPerformanceLogger('SetMax',MaxTime)">Set Max</button>
+                <input type="number" ng-model="MaxTime" min="10" />
+            </div>
+            <div>
+                {{ReponseGetSetPerformanceLogger.ExecutionTimeMs}}
+            </div>
+            <div>
+                {{ReponseGetSetPerformanceLogger.Message}}
+            </div>
+
+            <div>
+                <uib-accordion>
+                    <div uib-accordion-group class="panel-default" ng-repeat=" el in ReponseGetSetPerformanceLogger.listLogCallPerformanceItem">
+                        <uib-accordion-heading>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    {{el.sender}}
+                                </div>
+                                <div class="col-md-2">
+                                    MaxTime : {{el.MaxTimeFonction}}
+                                </div>
+                                <div class="col-md-2">
+                                    CptCall : {{el.CptCall}}
+                                </div>
+                                <div class="col-md-2">
+                                    Warning : {{el.WarningTimeMax}}
+                                </div>
+                            </div>
+                        </uib-accordion-heading>
+                        <pre>
+                            {{el | json}}
+                        </pre>
+                    </div>
+                </uib-accordion>
+            </div>
+        </div>
+
+        <div uib-accordion-group class="panel-default">
+            <uib-accordion-heading>
+                Plus
+            </uib-accordion-heading>
+            Voir pour maintenance BDD ici ou dans module propre a chaque BDD..
+        </div>
+    </uib-accordion>
+</div>

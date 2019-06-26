@@ -1,0 +1,348 @@
+﻿<style>
+    table {
+        width: 100%;
+    }
+
+    table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+    }
+
+    th, td {
+        padding: 5px;
+        text-align: left;
+    }
+
+    table#t01 tr:nth-child(even) {
+        background-color: #eee;
+    }
+
+    table#t01 tr:nth-child(odd) {
+        background-color: #fff;
+    }
+
+    table#t01 th {
+        background-color: gray;
+        color: white;
+    }
+
+    .tdEntete {
+        writing-mode: vertical-lr;
+        text-orientation: sideways;
+    }
+</style>
+
+<div>
+    <div layout="row">
+        <div flex="15">
+            <button type="button" class="btn btn-danger" data-ng-click="AnalyseFichiers()">Analyse Fichiers sur serveur</button>
+        </div>
+        <div flex>
+            <table>
+                <tr ng-repeat="file in RepAnalyseFichiers.listIdFichiers">
+                    <td>{{file.Id}}</td>
+                    <td>{{file.sFileName}}</td>
+                    <td>{{file.sMessage}}</td>
+                    <td>{{file.sPeriode}}</td>
+                    <td>{{file.delayMs}} ms</td>
+                    <td><div ng-show="file.Error==0"><button type="button" class="btn btn-danger" data-ng-click="AnalyseFichier(file.sFileName)">Analyse</button></div></td>
+                </tr>
+            </table>
+
+            <!--<pre>
+{{RepAnalyseFichiers | json}}
+</pre>-->
+
+        </div>
+    </div>
+    <hr/>
+    <div layout="row">
+        <!--<div flex="15">
+            <button type="button" class="btn btn-danger" data-ng-click="test(true)">Test Analyse</button>
+        </div>-->
+        <div flex="15" ng-show="RepTest">
+            <div>ExecutionTimeMs : {{RepTest.ExecutionTimeMs}}</div>
+            <div>sMessage : {{RepTest.sMessage}}</div>
+            <div>TotalDownload : {{RepTest.TotalDownload}}</div>
+            <div>TotalTotalGrossRevenue : {{RepTest.TotalTotalGrossRevenue}}</div>
+            <div>TotalTotalNetRevenue : {{RepTest.TotalTotalNetRevenue}}</div>
+            <div>TotalTotalFee :{{RepTest.TotalTotalFee}}</div>
+            <div>TotalTotalPayable : {{RepTest.TotalTotalPayable}}</div>
+        </div>
+    </div>
+
+        <hr />
+
+        <div layout="row">
+            <div flex="15">
+                <div ng-repeat="art in RepTest.listInfosArtiste">
+                    <button type="button" class="btn btn-secondary" data-ng-click="getDetailArtiste(art.NomArtiste)">
+                        <div style="text-align:justify; width:270px">
+                            <div><b>{{art.NomArtiste}}</b></div>
+                        </div>
+                    </button>
+
+                    <table>
+                        <tr>
+                            <th width="20%">
+                                <img src="{{art.UrlImage}}">
+                            </th>
+                            <th>
+                                <button type="button" class="btn btn-secondary" data-ng-click="getDetailArtiste(art.NomArtiste)">
+                                    <div style="text-align:justify; width:100px">
+                                        <div>Stream :{{art.DownLoadQuantity}}</div>
+                                        <div>Gross :{{art.GrossRevenue  | number:2}}</div>
+                                        <div>Net :{{art.NetRevenue  | number:2}}</div>
+                                        <div>Fee :{{art.TotalFee  | number:2}}</div>
+                                        <div>Payable :{{art.TotalPayable  | number:2}}</div>
+                                    </div>
+                                </button>
+                            </th>
+                        </tr>
+                    </table>
+                </div>
+
+            </div>
+            <div flex="5">
+
+            </div>
+                <div flex>
+
+
+                    <div ng-show="RepGetDetailArtiste">
+
+                        <div layout="row">
+                            <div flex="20">
+                                <img src="{{RepGetDetailArtiste.UrlImage}}">
+                            </div>
+                            <div flex="60">
+                                <h2>{{RepGetDetailArtiste.NomArtiste}}</h2>
+                            </div>
+                            <div flex>
+                                <div><b>{{RepGetDetailArtiste.NomArtiste}}</b></div>
+                                <br/>
+                                <div>DownLoad : <b>{{RepGetDetailArtiste.DownLoadQuantity}}</b></div>
+                                <div>Gross :{{RepGetDetailArtiste.GrossRevenue}}</div>
+                                <div>Net :{{RepGetDetailArtiste.NetRevenue}}</div>
+                                <div>Fee :{{RepGetDetailArtiste.TotalFee}}</div>
+                                <div>Payable :<b>{{RepGetDetailArtiste.TotalPayable}}</b></div>
+                            </div>
+                        </div>
+                                <hr />
+
+                        <md-tabs md-dynamic-height md-border-bottom>
+
+                            <md-tab>
+                                <md-tab-label>
+                                    Global Stats
+                                </md-tab-label>
+                                <md-tab-body>
+                                    <br />
+                                    <br />
+                                    <div ng-repeat="graph in GraphData">
+                                        <hr/>
+                                        <div layout="row">
+                                            <div flex="20">
+                                                <h3>{{graph.libelle}}</h3>
+                                            </div>
+                                            <div flex>
+                                                <div class="high-chart-pie2" idcontainer="graph.id" items="graph.data"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </md-tab-body>
+                            </md-tab>
+
+                            <md-tab>
+                                <md-tab-label>
+                                    by DMS
+                                </md-tab-label>
+                                <md-tab-body>
+                                    <br />
+                                    <br />
+                                    <table id="t01">
+                                        <tr>
+                                            <th>Product</th>
+                                            <th>ID</th>
+                                            <th>Stream</th>
+                                            <th ng-repeat="dms in RepGetDetailArtiste.listProduct[0].listKeyQuantityCritereDNS">
+                                                <span style="writing-mode:vertical-rl; text-orientation:mixed">{{dms.key}}</span>
+                                            </th>
+                                            <th>€</th>
+                                        </tr>
+                                        <tr ng-repeat="product in RepGetDetailArtiste.listProduct">
+                                            <td>{{product.NomProduct}}</td>
+                                            <td>{{product.ID}}</td>
+                                            <td>{{product.TotalStreaming}}</td>
+                                            <td ng-repeat="dms in product.listKeyQuantityCritereDNS">
+                                                {{dms.Quantity}}
+                                            </td>
+                                            <td>{{product.TotalEuros}}</td>
+                                        </tr>
+                                        <tr>
+                                            <th></th>
+                                            <th></th>
+                                            <th>{{RepGetDetailArtiste.DownLoadQuantity}}</th>
+                                            <th ng-repeat="dms in RepGetDetailArtiste.listKeyTotalQuantityCritereDNS">
+                                                {{dms.Quantity}}
+                                            </th>
+                                            <th>{{RepGetDetailArtiste.TotalPayable}}</th>
+                                        </tr>
+                                    </table>
+
+                                    <!--<hr />
+                                    <div class="high-chart-pie2" idcontainer="GraphData.id" items="GraphData.data"></div>
+                                    <hr />-->
+
+                                </md-tab-body>
+                            </md-tab>
+
+                            <md-tab>
+                                <md-tab-label>
+                                    by Territory
+                                </md-tab-label>
+                                <md-tab-body>
+                                    <br />
+                                    <br />
+                                    <table id="t01">
+                                        <tr>
+                                            <th>Product</th>
+                                            <th>ID</th>
+                                            <th>Stream</th>
+                                            <th ng-repeat="dms in RepGetDetailArtiste.listProduct[0].listKeyQuantityCritereTerritory">
+                                                <span style="writing-mode:vertical-rl; text-orientation:mixed">{{dms.key}}</span>
+                                            </th>
+                                            <th>€</th>
+                                        </tr>
+                                        <tr ng-repeat="product in RepGetDetailArtiste.listProduct">
+                                            <td>{{product.NomProduct}}</td>
+                                            <td>{{product.ID}}</td>
+                                            <td>{{product.TotalStreaming}}</td>
+                                            <td ng-repeat="dms in product.listKeyQuantityCritereTerritory">
+                                                {{dms.Quantity}}
+                                            </td>
+                                            <td>{{product.TotalEuros}}</td>
+                                        </tr>
+                                        <tr>
+                                            <th></th>
+                                            <th></th>
+                                            <th>{{RepGetDetailArtiste.DownLoadQuantity}}</th>
+                                            <th ng-repeat="dms in RepGetDetailArtiste.listKeyTotalQuantityCritereTerritory">
+                                                {{dms.Quantity}}
+                                            </th>
+                                            <th>{{RepGetDetailArtiste.TotalPayable}}</th>
+                                        </tr>
+                                    </table>
+
+                                    <!--<hr />
+                                    <div class="high-chart-pie2" idcontainer="GraphData1.id" items="GraphData1.data"></div>
+                                    <hr />-->
+
+                                </md-tab-body>
+                            </md-tab>
+
+                            <md-tab>
+                                <md-tab-label>
+                                    by FormatType
+                                </md-tab-label>
+                                <md-tab-body>
+                                    <br />
+                                    <br />
+                                    <table id="t01">
+                                        <tr>
+                                            <th>Product</th>
+                                            <th>ID</th>
+                                            <th>Stream</th>
+                                            <th ng-repeat="dms in RepGetDetailArtiste.listProduct[0].listKeyQuantityCritereFormatType">
+                                                <span style="writing-mode:vertical-rl; text-orientation:mixed">{{dms.key}}</span>
+                                            </th>
+                                            <th>€</th>
+                                        </tr>
+                                        <tr ng-repeat="product in RepGetDetailArtiste.listProduct">
+                                            <td>{{product.NomProduct}}</td>
+                                            <td>{{product.ID}}</td>
+                                            <td>{{product.TotalStreaming}}</td>
+                                            <td ng-repeat="dms in product.listKeyQuantityCritereFormatType">
+                                                {{dms.Quantity}}
+                                            </td>
+                                            <td>{{product.TotalEuros}}</td>
+                                        </tr>
+                                        <tr>
+                                            <th></th>
+                                            <th></th>
+                                            <th>{{RepGetDetailArtiste.DownLoadQuantity}}</th>
+                                            <th ng-repeat="dms in RepGetDetailArtiste.listKeyTotalQuantityCritereFormatType">
+                                                {{dms.Quantity}}
+                                            </th>
+                                            <th>{{RepGetDetailArtiste.TotalPayable}}</th>
+                                        </tr>
+                                    </table>
+
+                                    <!--<hr />
+                                    <div class="high-chart-pie2" idcontainer="GraphData2.id" items="GraphData2.data"></div>
+                                    <hr />-->
+
+                                </md-tab-body>
+                            </md-tab>
+
+                            <md-tab>
+                                <md-tab-label>
+                                    by Price Category
+                                </md-tab-label>
+                                <md-tab-body>
+                                    <br />
+                                    <br />
+                                    <table id="t01">
+                                        <tr>
+                                            <th>Product</th>
+                                            <th>ID</th>
+                                            <th>Stream</th>
+                                            <th ng-repeat="dms in RepGetDetailArtiste.listProduct[0].listKeyQuantityCritereCategorie">
+                                                <span style="writing-mode:vertical-rl; text-orientation:mixed">{{dms.key}}</span>
+                                            </th>
+                                            <th>€</th>
+                                        </tr>
+                                        <tr ng-repeat="product in RepGetDetailArtiste.listProduct">
+                                            <td>{{product.NomProduct}}</td>
+                                            <td>{{product.ID}}</td>
+                                            <td>{{product.TotalStreaming}}</td>
+                                            <td ng-repeat="dms in product.listKeyQuantityCritereCategorie">
+                                                {{dms.Quantity}}
+                                            </td>
+                                            <td>{{product.TotalEuros}}</td>
+                                        </tr>
+                                        <tr>
+                                            <th></th>
+                                            <th></th>
+                                            <th>{{RepGetDetailArtiste.DownLoadQuantity}}</th>
+                                            <th ng-repeat="dms in RepGetDetailArtiste.listKeyTotalQuantityCritereCategorie">
+                                                {{dms.Quantity}}
+                                            </th>
+                                            <th>{{RepGetDetailArtiste.TotalPayable}}</th>
+                                        </tr>
+                                    </table>
+
+                                    <!--<hr />
+                                    <div class="high-chart-pie2" idcontainer="GraphData3.id" items="GraphData3.data"></div>
+                                    <hr />-->
+
+                                </md-tab-body>
+                            </md-tab>
+                        </md-tabs>
+                            </div>
+
+                            <!--<pre>
+            {{RepGetDetailArtiste | json}}
+            </pre>-->
+
+                        </div>
+                    </div>
+
+        <div>
+            <!--<pre>
+                    {{RepTest | json}}
+</pre>-->
+
+        </div>
+
+    </div>

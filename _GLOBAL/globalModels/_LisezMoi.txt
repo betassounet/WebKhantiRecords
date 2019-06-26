@@ -1,0 +1,3 @@
+﻿Ici tous les modèles et classes parametres / appel/ reponse succeptibles d'être partagés dans la solution'.
+Si ces modeles / classes doivent être visible à l'extèrieur pour une utilisation par un client WebAPI sous windows.net' il vaut mieux mettre ses modèles dans le projet PublishedModels 
+qui a vocation a être partagé avec autre solution.

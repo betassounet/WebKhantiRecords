@@ -1,0 +1,92 @@
+﻿<!DOCTYPE html>
+<html  xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>KhantiRecords Analyse</title>
+
+    <!-- JQuery -->
+    <script src="./Scripts/jquery-3.2.1.min.js"></script>
+
+    <!-- Bootstrap -->
+    <script src="./Scripts/bootstrap.min.js"></script>
+
+    <!-- Angular + Material -->
+    <script src="./Scripts/cdn/angular1.6.1/angular.js"></script>
+    <script src="./Scripts/cdn/angular1.6.1/angular-animate.js"></script>
+    <script src="./Scripts/cdn/angular1.6.1/angular-sanitize.js"></script>
+    <script src="./Scripts/cdn/angular1.6.1/angular-route.js"></script>
+    <script src="./Scripts/cdn/ui-bootstrap-tpls-2.5.0.js"></script>
+    <script src="./Scripts/cdn/angular1.6.1/angular-aria.min.js"></script>
+    <script src="./Scripts/cdn/angular1.6.1/angular-messages.min.js"></script>
+    <script src="./Scripts/cdn/angular-material.min.js"></script>
+
+    
+    <!-- Material Icons -->
+    <link href="./css/material-icons.css" rel="stylesheet">
+    <!-- Material Icons Guide: https://google.github.io/material-design-icons/ -->
+    <!-- Material Icons Search: https://material.io/icons/ -->
+
+    <!--Test lodash via le cdn-->
+    <script src="./Scripts/lodash.min.js"></script>
+
+    <script src="./Scripts/highstock.js"></script>
+
+    <link href="./css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="./css/angular-material.min.css">
+
+
+    <!-- Pour la partie main-->
+    <script src="./app/app.js"></script>
+
+    <script src="./app/directives/UtilTextArea.js"></script>
+    <script src="./app/directives/hightChartDirectives.js"></script>
+
+    <script src="./app/app.welcome/welcome.js"></script>
+    <script src="./app/app.config/config.js"></script>
+    <script src="./app/app.help/help.js"></script>
+    <script src="./app/app.Maintenance/Maintenance.js"></script>
+    <script src="./app/app.NoSqlEval/nosqlEval.js"></script>
+
+    <!--// Pour test sur editeur de code web :-->
+
+    <!-- Le vendor... -->
+    <!-- Le css -->
+    <link rel="stylesheet" type="text/css" href="http://codemirror.net/lib/codemirror.css" />
+    
+    <script src="http://codemirror.net/lib/codemirror.js"></script>
+
+    <!--recherche des modes sous : https://codemirror.net/mode/index.html-->
+
+    <script src="http://codemirror.net/mode/scheme/scheme.js"></script>
+    <script src="http://codemirror.net/mode/javascript/javascript.js"></script>
+    <script src="http://codemirror.net/mode/xml/xml.js"></script>
+    <script src="http://codemirror.net/mode/clike/clike.js"></script>
+
+    <script src="https://codemirror.net/mode/css/css.js"></script>
+    <script src="https://codemirror.net/mode/htmlmixed/htmlmixed.js"></script>
+    <script src="https://codemirror.net/mode/php/php.js"></script>
+    <script src="https://codemirror.net/mode/python/python.js"></script>
+   
+    <script src="https://rawgithub.com/angular-ui/ui-codemirror/bower/ui-codemirror.min.js"></script>
+
+    <script src="./app/app.TestKhanti/TestKhanti.js"></script>
+    <script src="./app/app.TestKhanti/Analyse2.js"></script>
+
+</head>
+
+<!--ATTENTION DE NE PAS OUBLIER le ng-app comme tout prealable a angular-->
+
+<!--<body ng-app="app" class="container-fluid" style="background-color: rgb(47, 47, 47);">-->
+<body ng-app="app" class="container-fluid">
+
+        <script type="text/javascript">
+            var version = angular.version.full;
+            console.log("Version angular " + version);
+        </script>
+
+        <!--<h1>Body</h1>-->
+
+        <div ng-include="'app/nav.html'"></div>
+        <div ng-view></div>
+
+    </body>
+</html>

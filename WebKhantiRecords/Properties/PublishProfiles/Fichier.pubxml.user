@@ -1,0 +1,229 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+Ce fichier est utilisé par le processus de publication/package de votre projet Web. Vous pouvez personnaliser le comportement de ce processus
+en modifiant ce fichier MSBuild. Pour en savoir plus à ce sujet, consultez la page http://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <_PublishTargetUrl>C:\WEB\publications\WebKhantiRecords</_PublishTargetUrl>
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="app/app.config/config.html">
+      <publishTime>06/22/2019 09:55:53</publishTime>
+    </File>
+    <File Include="app/app.config/config.js">
+      <publishTime>06/22/2019 12:14:46</publishTime>
+    </File>
+    <File Include="app/app.help/help.html">
+      <publishTime>06/22/2019 09:55:53</publishTime>
+    </File>
+    <File Include="app/app.help/help.js">
+      <publishTime>06/22/2019 09:55:53</publishTime>
+    </File>
+    <File Include="app/app.js">
+      <publishTime>06/22/2019 13:17:10</publishTime>
+    </File>
+    <File Include="app/app.Maintenance/Maintenance.html">
+      <publishTime>06/22/2019 09:55:53</publishTime>
+    </File>
+    <File Include="app/app.Maintenance/Maintenance.js">
+      <publishTime>06/22/2019 12:14:46</publishTime>
+    </File>
+    <File Include="app/app.NoSqlEval/nosqlEval.html">
+      <publishTime>06/22/2019 09:55:53</publishTime>
+    </File>
+    <File Include="app/app.NoSqlEval/nosqlEval.js">
+      <publishTime>06/22/2019 12:14:46</publishTime>
+    </File>
+    <File Include="app/app.TestKhanti/TestKhanti.html">
+      <publishTime>06/23/2019 00:59:58</publishTime>
+    </File>
+    <File Include="app/app.TestKhanti/TestKhanti.js">
+      <publishTime>06/23/2019 00:34:08</publishTime>
+    </File>
+    <File Include="app/app.welcome/welcome.html">
+      <publishTime>06/22/2019 13:17:10</publishTime>
+    </File>
+    <File Include="app/app.welcome/welcome.js">
+      <publishTime>06/22/2019 10:32:33</publishTime>
+    </File>
+    <File Include="app/directives/hightChartDirectives.js">
+      <publishTime>06/22/2019 21:44:30</publishTime>
+    </File>
+    <File Include="app/directives/UtilTextArea.js">
+      <publishTime>06/22/2019 09:55:53</publishTime>
+    </File>
+    <File Include="app/nav.html">
+      <publishTime>06/23/2019 01:03:06</publishTime>
+    </File>
+    <File Include="bin/EPPlus.dll">
+      <publishTime>06/22/2019 12:24:32</publishTime>
+    </File>
+    <File Include="bin/ExcelPackage.dll">
+      <publishTime>04/04/2019 16:57:10</publishTime>
+    </File>
+    <File Include="bin/fr/System.Net.Http.Formatting.resources.dll">
+      <publishTime>06/22/2019 09:50:21</publishTime>
+    </File>
+    <File Include="bin/fr/System.Web.Http.resources.dll">
+      <publishTime>06/22/2019 09:50:21</publishTime>
+    </File>
+    <File Include="bin/fr/System.Web.Http.WebHost.resources.dll">
+      <publishTime>06/22/2019 09:50:21</publishTime>
+    </File>
+    <File Include="bin/KhantiRecordsMetier.dll">
+      <publishTime>06/23/2019 10:34:01</publishTime>
+    </File>
+    <File Include="bin/Newtonsoft.Json.dll">
+      <publishTime>06/22/2019 09:50:16</publishTime>
+    </File>
+    <File Include="bin/Prince.dll">
+      <publishTime>06/22/2019 12:24:32</publishTime>
+    </File>
+    <File Include="bin/System.Net.Http.Formatting.dll">
+      <publishTime>06/22/2019 09:50:20</publishTime>
+    </File>
+    <File Include="bin/System.Web.Http.dll">
+      <publishTime>06/22/2019 09:50:21</publishTime>
+    </File>
+    <File Include="bin/System.Web.Http.WebHost.dll">
+      <publishTime>06/22/2019 09:50:21</publishTime>
+    </File>
+    <File Include="bin/WebKhantiRecords.dll">
+      <publishTime>06/23/2019 10:34:01</publishTime>
+    </File>
+    <File Include="bin/_GLOBAL.dll">
+      <publishTime>06/23/2019 00:44:24</publishTime>
+    </File>
+    <File Include="css/angular-material.min.css">
+      <publishTime>06/22/2019 09:56:18</publishTime>
+    </File>
+    <File Include="css/bootstrap.min.css">
+      <publishTime>06/22/2019 09:56:18</publishTime>
+    </File>
+    <File Include="css/material-icons.css">
+      <publishTime>06/22/2019 09:56:18</publishTime>
+    </File>
+    <File Include="css/MaterialIcons-Regular.eot">
+      <publishTime>06/22/2019 09:56:18</publishTime>
+    </File>
+    <File Include="css/MaterialIcons-Regular.ttf">
+      <publishTime>06/22/2019 09:56:18</publishTime>
+    </File>
+    <File Include="css/MaterialIcons-Regular.woff">
+      <publishTime>06/22/2019 09:56:18</publishTime>
+    </File>
+    <File Include="css/MaterialIcons-Regular.woff2">
+      <publishTime>06/22/2019 09:56:18</publishTime>
+    </File>
+    <File Include="favicon.ico">
+      <publishTime>06/22/2019 09:55:19</publishTime>
+    </File>
+    <File Include="Files/DownLoad/Analyse Digitale 1812 vérif ok.xlsx">
+      <publishTime>06/23/2019 00:48:23</publishTime>
+    </File>
+    <File Include="Files/UpLoad/Analyse Digitale 1812 vérif ok.xlsx">
+      <publishTime>05/05/2019 12:32:21</publishTime>
+    </File>
+    <File Include="Files/UpLoad/Khanti Records DIG - 70265 - 0119.xlsx">
+      <publishTime>05/05/2019 12:30:47</publishTime>
+    </File>
+    <File Include="Files/UpLoad/Khanti Records DIG - 70265 - 1218.xlsx">
+      <publishTime>05/05/2019 12:32:05</publishTime>
+    </File>
+    <File Include="Files/UpLoad/Khanti Records DIG - 70265 - DIGI - 05 2019.xlsx">
+      <publishTime>06/22/2019 09:01:02</publishTime>
+    </File>
+    <File Include="Files/UpLoad/TestUpLoad.xlsx">
+      <publishTime>06/22/2019 09:01:02</publishTime>
+    </File>
+    <File Include="fonts/glyphicons-halflings-regular.eot">
+      <publishTime>06/22/2019 09:56:34</publishTime>
+    </File>
+    <File Include="fonts/glyphicons-halflings-regular.svg">
+      <publishTime>06/22/2019 09:56:34</publishTime>
+    </File>
+    <File Include="fonts/glyphicons-halflings-regular.ttf">
+      <publishTime>06/22/2019 09:56:34</publishTime>
+    </File>
+    <File Include="fonts/glyphicons-halflings-regular.woff">
+      <publishTime>06/22/2019 09:56:34</publishTime>
+    </File>
+    <File Include="fonts/glyphicons-halflings-regular.woff2">
+      <publishTime>06/22/2019 09:56:34</publishTime>
+    </File>
+    <File Include="Global.asax">
+      <publishTime>06/22/2019 09:50:15</publishTime>
+    </File>
+    <File Include="img/image-not-found.jpg">
+      <publishTime>06/22/2019 16:07:42</publishTime>
+    </File>
+    <File Include="img/LOGO_khanti_couleurs-e1558105770391.png">
+      <publishTime>06/22/2019 10:55:53</publishTime>
+    </File>
+    <File Include="img/slider_homepage.jpg">
+      <publishTime>06/22/2019 10:28:06</publishTime>
+    </File>
+    <File Include="index.html">
+      <publishTime>06/22/2019 21:49:36</publishTime>
+    </File>
+    <File Include="packages.config">
+      <publishTime>06/22/2019 09:52:44</publishTime>
+    </File>
+    <File Include="Scripts/bootstrap.js">
+      <publishTime>06/22/2019 09:56:52</publishTime>
+    </File>
+    <File Include="Scripts/bootstrap.min.js">
+      <publishTime>06/22/2019 09:56:52</publishTime>
+    </File>
+    <File Include="Scripts/cdn/angular-material.min.js">
+      <publishTime>06/22/2019 09:56:52</publishTime>
+    </File>
+    <File Include="Scripts/cdn/angular1.6.1/angular-animate.js">
+      <publishTime>06/22/2019 09:56:52</publishTime>
+    </File>
+    <File Include="Scripts/cdn/angular1.6.1/angular-aria.min.js">
+      <publishTime>06/22/2019 09:56:52</publishTime>
+    </File>
+    <File Include="Scripts/cdn/angular1.6.1/angular-messages.min.js">
+      <publishTime>06/22/2019 09:56:52</publishTime>
+    </File>
+    <File Include="Scripts/cdn/angular1.6.1/angular-route.js">
+      <publishTime>06/22/2019 09:56:52</publishTime>
+    </File>
+    <File Include="Scripts/cdn/angular1.6.1/angular-sanitize.js">
+      <publishTime>06/22/2019 09:56:52</publishTime>
+    </File>
+    <File Include="Scripts/cdn/angular1.6.1/angular.js">
+      <publishTime>06/22/2019 09:56:52</publishTime>
+    </File>
+    <File Include="Scripts/cdn/ui-bootstrap-tpls-2.5.0.js">
+      <publishTime>06/22/2019 09:56:52</publishTime>
+    </File>
+    <File Include="Scripts/d3.js">
+      <publishTime>06/22/2019 09:56:52</publishTime>
+    </File>
+    <File Include="Scripts/go.js">
+      <publishTime>06/22/2019 09:56:52</publishTime>
+    </File>
+    <File Include="Scripts/highstock.js">
+      <publishTime>06/22/2019 09:56:52</publishTime>
+    </File>
+    <File Include="Scripts/jquery-3.2.1.js">
+      <publishTime>06/22/2019 09:56:52</publishTime>
+    </File>
+    <File Include="Scripts/jquery-3.2.1.min.js">
+      <publishTime>06/22/2019 09:56:52</publishTime>
+    </File>
+    <File Include="Scripts/jquery-3.2.1.min.map">
+      <publishTime>06/22/2019 09:56:52</publishTime>
+    </File>
+    <File Include="Scripts/lodash.min.js">
+      <publishTime>06/22/2019 09:56:52</publishTime>
+    </File>
+    <File Include="Web.config">
+      <publishTime>06/23/2019 00:44:27</publishTime>
+    </File>
+  </ItemGroup>
+</Project>
