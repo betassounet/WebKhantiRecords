@@ -41,3 +41,9 @@ C:\GIT2019\WebKhantiRecords\_GLOBAL\bin\Debug\_GLOBAL.pdb
 C:\GIT2019\WebKhantiRecords\_GLOBAL\bin\Debug\ExcelPackage.dll
 C:\GIT2019\WebKhantiRecords\_GLOBAL\obj\Debug\_GLOBAL.dll
 C:\GIT2019\WebKhantiRecords\_GLOBAL\obj\Debug\_GLOBAL.pdb
+D:\Etude\WebKhantiRecords\_GLOBAL\bin\Debug\_GLOBAL.dll
+D:\Etude\WebKhantiRecords\_GLOBAL\bin\Debug\_GLOBAL.pdb
+D:\Etude\WebKhantiRecords\_GLOBAL\bin\Debug\ExcelPackage.dll
+D:\Etude\WebKhantiRecords\_GLOBAL\obj\Debug\_GLOBAL.csprojResolveAssemblyReference.cache
+D:\Etude\WebKhantiRecords\_GLOBAL\obj\Debug\_GLOBAL.dll
+D:\Etude\WebKhantiRecords\_GLOBAL\obj\Debug\_GLOBAL.pdb

@@ -3,9 +3,9 @@
 
     angular
         .module('app')
-        .controller('welcomeCtrl', welcomeCtrl);
+        .controller('welcomeCtrl', ['$scope', '$http', '$mdToast', '$mdDialog', '$sce', 'mainService', welcomeCtrl]);    //['$scope', '$http', '$location', 'GlobalService', 'mainService', appCtrl]
 
-    function welcomeCtrl($scope, $http, $mdToast, $mdDialog, $sce) {
+    function welcomeCtrl($scope, $http, $mdToast, $mdDialog, $sce, mainService) {
        
         $scope.ImageLogo = "./img/LOGO_khanti_couleurs-e1558105770391.png";
         $scope.ImageWelcome = "./img/slider_homepage.jpg";
@@ -14,7 +14,9 @@
         function activate() {
         }
 
-
+        $scope.Test = function () {
+            mainService.EnterPage('toto');
+        }
    }
 
 })();

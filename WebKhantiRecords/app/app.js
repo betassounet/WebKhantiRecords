@@ -82,6 +82,11 @@
             templateUrl: 'app/app.TestKhanti/Analyse2.html',
             controller: 'Analyse2Ctrl',
         });
+
+        $routeProvider.when('/login', {
+            templateUrl: 'app/app.TestKhanti/loginPage.html',
+            controller: 'loginPageCtrl',
+        });
         
 
         $routeProvider.otherwise({
@@ -104,9 +109,9 @@
    
 
     // Controller appCtrl au besoin..
-    app.controller('appCtrl', ['$scope', '$http', '$location', 'GlobalService', appCtrl]);
+    app.controller('appCtrl', ['$scope', '$http', '$location', 'GlobalService', 'mainService', appCtrl]);
 
-    function appCtrl($scope, $http, $location, GlobalService) {
+    function appCtrl($scope, $http, $location, GlobalService, mainService) {
         $scope.myData = "Pas Init";
         $scope.VisuMenu = false;
         $scope.ImageLogo = "./img/LOGO_khanti_couleurs-e1558105770391.png";
@@ -116,6 +121,8 @@
             GetMyUserIdentity();
         }
 
+        $scope.login = "No login";
+        $scope.etapeMenu = "login";
 
         function GetMyUserIdentity() {
             var param = {
@@ -133,6 +140,23 @@
                 alert("Probleme appel Web API sur URL : " + BASE_URL_API +"\nAdapter URL Base Web API ou \n voir CORS policy ??");
             });
         }
+
+        $scope.$parent.$on("onEnterPage", function (e, data) {
+            //$scope.$apply(function () {
+                console.log("recu");
+            //});
+        });
+
+        $scope.$parent.$on("onLogin", function (e, data) {
+            console.log("recu loging :");
+            console.log(data);
+            $scope.etapeMenu = "session";
+            $scope.login = data.title;
+            $location.path('analyse2');
+        });
+
+        
+
     }
 
 

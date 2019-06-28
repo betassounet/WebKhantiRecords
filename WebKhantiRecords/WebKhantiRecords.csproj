@@ -83,10 +83,13 @@
     <Content Include="app\app.NoSqlEval\nosqlEval.js" />
     <Content Include="app\app.TestKhanti\Analyse2.html" />
     <Content Include="app\app.TestKhanti\Analyse2.js" />
+    <Content Include="app\app.TestKhanti\loginPage.html" />
+    <Content Include="app\app.TestKhanti\loginPage.js" />
     <Content Include="app\app.TestKhanti\TestKhanti.html" />
     <Content Include="app\app.TestKhanti\TestKhanti.js" />
     <Content Include="app\app.welcome\welcome.html" />
     <Content Include="app\app.welcome\welcome.js" />
+    <Content Include="app\appMainService.js" />
     <Content Include="app\directives\hightChartDirectives.js" />
     <Content Include="app\directives\UtilTextArea.js" />
     <Content Include="app\nav.html" />
