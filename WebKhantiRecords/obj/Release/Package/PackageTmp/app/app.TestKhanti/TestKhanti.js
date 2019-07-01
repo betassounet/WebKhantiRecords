@@ -13,13 +13,24 @@
         function activate() {
         }
 
-        $scope.test = function (details) {
+
+        $scope.AnalyseFichiers = function () {
+            var param = {
+                sAction: '',
+            };
+            $http.post("api/Test/AnalyseFichiers", param).then(function (response) {
+                $scope.RepAnalyseFichiers = response.data;
+            });
+        }
+
+        $scope.AnalyseFichier = function (NomFichier) {
             $scope.RepTest = null;
             var param = {
                 sAction:'',
-                WithDetails:details
+                WithDetails: true,
+                NomFichier: NomFichier
             };
-            $http.post("api/Test/Test", param).then(function (response) {
+            $http.post("api/Test/AnalyseFichier", param).then(function (response) {
                 $scope.RepTest = response.data;
             });
         }

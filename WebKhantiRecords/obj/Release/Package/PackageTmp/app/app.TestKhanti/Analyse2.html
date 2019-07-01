@@ -1,0 +1,85 @@
+﻿<style>
+    table {
+        width: 100%;
+    }
+
+    table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+    }
+
+    th, td {
+        padding: 5px;
+        text-align: left;
+    }
+
+    table#t01 tr:nth-child(even) {
+        background-color: #eee;
+    }
+
+    table#t01 tr:nth-child(odd) {
+        background-color: #fff;
+    }
+
+    table#t01 th {
+        background-color: gray;
+        color: white;
+    }
+
+    .tdEntete {
+        writing-mode: vertical-lr;
+        text-orientation: sideways;
+    }
+
+    #tableHolder
+ {
+ /*width: 300px;*/
+ height: 1000px;
+ overflow: scroll
+}
+
+
+</style>
+
+<div>
+    <div layout="row">
+        <div flex="30" id="tableHolder">
+            {{RepAnalyse2.ExecutionTimeMs}}
+            <table id="t01">
+
+                <tr>
+                    <th>
+                        <button type="button" class="btn btn-danger" data-ng-click="analyse2('OrderName')">Order Name</button>
+                        <button type="button" class="btn btn-danger" data-ng-click="analyse2('OrderDownload')">DownLoad</button>
+                        <button type="button" class="btn btn-danger" data-ng-click="analyse2('OrderPays')">Country</button>
+                        <button type="button" class="btn btn-danger" data-ng-click="analyse2('OrderPayable')">Payable</button>
+                    </th>
+                    <th></th>
+                </tr>
+                <tr>
+                    <th>Nom</th>
+                    <th></th>
+                </tr>
+                <tr ng-repeat="art in RepAnalyse2.listRepoArtiste">
+                    <td>
+                        <div><b>{{art.Nom}}</b></div>
+                    <div>DownLoad:{{art.TotalDownLoad}} Country:{{art.NbPays}} Payable:{{art.TotalPayable}}</div>
+                    </td>
+                    <td><button type="button" class="btn btn-danger" data-ng-click="analyse2('View',art.Nom )">View</button></td>
+                </tr>
+            </table>
+        </div>
+        <div flex ="5">
+
+        </div>
+        <div flex>
+            {{RepAnalyse2.resultsArtiste}}
+            <img src="{{RepAnalyse2.resultsArtiste.Url}}">
+        </div>
+    </div>
+
+    <!--<pre>
+{{RepAnalyse2 | json}}
+</pre>-->
+
+</div>

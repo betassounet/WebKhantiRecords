@@ -45,5 +45,13 @@ namespace WebKhantiRecords.Controllers
             return returnValue;
         }
 
+        [HttpPost]
+        public RepDetailArtisteV2 GetDetailArtisteV2(ParamDetailArtisteV2 param) {
+            var sw = SinglePerformanceLogger.Instance().StartStopWatch(HttpContext.Current.Request);
+            var returnValue = SingleKhanti.Instance().GetDetailArtisteV2(param);
+            returnValue.ExecutionTimeMs = SinglePerformanceLogger.Instance().StopStopWatch(sw);
+            return returnValue;
+        }
+
     }
 }

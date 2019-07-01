@@ -1,0 +1,115 @@
+﻿<style>
+    /*p {
+        padding: 100px;
+        font-size: 24px;
+        font-weight: bold;
+        text-align: right;
+        background: #dbdfe5;
+    }*/
+    div#d01 {
+        padding: 5px;
+        margin: 5px;
+        height: 200px;
+        /*font-size: 20px;
+        font-weight: bold;*/
+        text-align: right;
+        background: #dbdfe5;
+    }
+</style>
+
+
+
+<div class="row">
+
+    <div class="col-md-2">
+        <uib-accordion>
+            <div uib-accordion-group class="panel-default" is-open="true">
+                <uib-accordion-heading>
+                    Resume
+                </uib-accordion-heading>
+
+                <div ng-show="RepAnalyse2">
+                    <label>Periodes analysées</label>
+                    <ul>
+                        <li ng-repeat="periode in RepAnalyse2.resultatGlobal.listPeriodes">
+                            <span style="font-size: 12px; font-weight: bold;">{{periode}}</span>
+                        </li>
+                    </ul>
+                    <hr />
+                    <table>
+                        <tr>
+                            <th width="50%"><span style="font-size: 18px;">Artistes</span></th>
+                            <th width="50%"><span style="font-size: 18px;">DownLoad</span></th>
+                        </tr>
+                        <tr>
+                            <td><span style="font-size: 24px; font-weight: bold;">{{RepAnalyse2.resultatGlobal.NbArtiste}}</span></td>
+                            <td><span style="font-size: 24px; font-weight: bold;">{{RepAnalyse2.resultatGlobal.TotalDownload  | number}}</span></td>
+                        </tr>
+                    </table>
+                    <hr />
+                    <div><label><span style="font-size: 18px;">Total Payable</span></label></div>
+                    <span style="font-size: 24px; font-weight: bold;">{{RepAnalyse2.resultatGlobal.TotalPayable  | number:2}} €</span>
+                </div>
+
+            </div>
+            <div uib-accordion-group class="panel-default">
+                <uib-accordion-heading>
+                    Tri
+                </uib-accordion-heading>
+
+                <h3>Tri</h3>
+                <md-radio-group ng-model="typeTri" ng-change="onTypeTriChange(typeTri)">
+
+                    <md-radio-button value="None" class="md-primary">Aucun</md-radio-button>
+                    <md-radio-button value="OrderName" class="md-primary">Nom</md-radio-button>
+                    <md-radio-button value="OrderNameDesc" class="md-primary">Nom (Inverse)</md-radio-button>
+                    <md-radio-button value="OrderDownload">Nb DownLoad</md-radio-button>
+                    <md-radio-button value="OrderDownloadDesc">Nb DownLoad (Inverse)</md-radio-button>
+                    <md-radio-button value="OrderPays">Nb Pays</md-radio-button>
+                    <md-radio-button value="OrderPaysDesc">Nb Pays (Inverse)</md-radio-button>
+                    <md-radio-button value="OrderPayable">Payable</md-radio-button>
+                    <md-radio-button value="OrderPayableDesc">Payable (Inverse)</md-radio-button>
+
+                </md-radio-group>
+
+            </div>
+        </uib-accordion>
+    </div>
+
+    <div class="col-md-8">
+        <div ng-hide="RepAnalyse2">
+            <h1>WAITING DATA LIST</h1>
+        </div>
+        <div ng-show="RepAnalyse2">
+            <div class="row">
+                <div class="col-lg-4" ng-repeat="art in RepAnalyse2.listRepoArtiste">
+                    <div id="d01" style="background-image: url({{art.UrlImage}}); background-repeat:no-repeat; background-size:contain;">
+                        <div class="row">
+                            <div class="col-md-6"></div>
+                            <div class="col-md-5">
+                                <div style="height:100px">
+                                    <a ng-click="clickLien(art.Nom)"><span style="font-size: 18px"><b>{{art.Nom}}</b></span></a>
+                                </div>
+                                <div><span style="font-size: 20px" uib-tooltip="Total Download" tooltip-placement="left"><b>{{art.TotalDownLoad  | number}}</b></span></div>
+                                <div><span style="font-size: 16px" uib-tooltip="Total Pays" tooltip-placement="left"><b>{{art.NbPays | number}}</b></span></div>
+                                <div><span style="font-size: 18px" uib-tooltip="Total Payable" tooltip-placement="left"><b>{{art.TotalPayable | number:2}} €</b></span></div>
+                            </div>
+                            <div class="col-md-5">
+
+                            </div>
+                        </div>
+
+                        <!--<md-tooltip> Total Download </md-tooltip>-->
+                        <!--<p>{{art}}</p>-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-2">
+
+    </div>
+
+</div>
+

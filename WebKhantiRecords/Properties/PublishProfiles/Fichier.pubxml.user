@@ -22,7 +22,7 @@ en modifiant ce fichier MSBuild. Pour en savoir plus à ce sujet, consultez la p
       <publishTime>06/22/2019 09:55:53</publishTime>
     </File>
     <File Include="app/app.js">
-      <publishTime>06/22/2019 13:17:10</publishTime>
+      <publishTime>06/29/2019 15:07:00</publishTime>
     </File>
     <File Include="app/app.Maintenance/Maintenance.html">
       <publishTime>06/22/2019 09:55:53</publishTime>
@@ -36,26 +36,56 @@ en modifiant ce fichier MSBuild. Pour en savoir plus à ce sujet, consultez la p
     <File Include="app/app.NoSqlEval/nosqlEval.js">
       <publishTime>06/22/2019 12:14:46</publishTime>
     </File>
+    <File Include="app/app.TestKhanti/adminChoixArtiste.html">
+      <publishTime>06/30/2019 00:29:29</publishTime>
+    </File>
+    <File Include="app/app.TestKhanti/adminChoixArtiste.js">
+      <publishTime>06/29/2019 17:09:53</publishTime>
+    </File>
+    <File Include="app/app.TestKhanti/Analyse2.html">
+      <publishTime>06/26/2019 00:28:24</publishTime>
+    </File>
+    <File Include="app/app.TestKhanti/Analyse2.js">
+      <publishTime>06/26/2019 00:11:38</publishTime>
+    </File>
+    <File Include="app/app.TestKhanti/loginPage.html">
+      <publishTime>06/29/2019 15:55:01</publishTime>
+    </File>
+    <File Include="app/app.TestKhanti/loginPage.js">
+      <publishTime>06/29/2019 15:07:00</publishTime>
+    </File>
+    <File Include="app/app.TestKhanti/pageArtiste.html">
+      <publishTime>06/30/2019 00:19:06</publishTime>
+    </File>
+    <File Include="app/app.TestKhanti/pageArtiste.js">
+      <publishTime>06/30/2019 00:17:35</publishTime>
+    </File>
     <File Include="app/app.TestKhanti/TestKhanti.html">
-      <publishTime>06/23/2019 00:59:58</publishTime>
+      <publishTime>06/25/2019 22:28:07</publishTime>
     </File>
     <File Include="app/app.TestKhanti/TestKhanti.js">
-      <publishTime>06/23/2019 00:34:08</publishTime>
+      <publishTime>06/25/2019 22:21:29</publishTime>
+    </File>
+    <File Include="app/app.TestKhanti/_models.js">
+      <publishTime>06/29/2019 15:23:25</publishTime>
     </File>
     <File Include="app/app.welcome/welcome.html">
-      <publishTime>06/22/2019 13:17:10</publishTime>
+      <publishTime>06/28/2019 21:53:43</publishTime>
     </File>
     <File Include="app/app.welcome/welcome.js">
-      <publishTime>06/22/2019 10:32:33</publishTime>
+      <publishTime>06/28/2019 23:38:28</publishTime>
+    </File>
+    <File Include="app/appMainService.js">
+      <publishTime>06/29/2019 15:23:25</publishTime>
     </File>
     <File Include="app/directives/hightChartDirectives.js">
-      <publishTime>06/22/2019 21:44:30</publishTime>
+      <publishTime>06/30/2019 00:18:52</publishTime>
     </File>
     <File Include="app/directives/UtilTextArea.js">
       <publishTime>06/22/2019 09:55:53</publishTime>
     </File>
     <File Include="app/nav.html">
-      <publishTime>06/23/2019 01:03:06</publishTime>
+      <publishTime>06/30/2019 00:40:25</publishTime>
     </File>
     <File Include="bin/EPPlus.dll">
       <publishTime>06/22/2019 12:24:32</publishTime>
@@ -73,7 +103,7 @@ en modifiant ce fichier MSBuild. Pour en savoir plus à ce sujet, consultez la p
       <publishTime>06/22/2019 09:50:21</publishTime>
     </File>
     <File Include="bin/KhantiRecordsMetier.dll">
-      <publishTime>06/23/2019 10:34:01</publishTime>
+      <publishTime>06/30/2019 00:38:41</publishTime>
     </File>
     <File Include="bin/Newtonsoft.Json.dll">
       <publishTime>06/22/2019 09:50:16</publishTime>
@@ -91,10 +121,10 @@ en modifiant ce fichier MSBuild. Pour en savoir plus à ce sujet, consultez la p
       <publishTime>06/22/2019 09:50:21</publishTime>
     </File>
     <File Include="bin/WebKhantiRecords.dll">
-      <publishTime>06/23/2019 10:34:01</publishTime>
+      <publishTime>06/30/2019 00:41:30</publishTime>
     </File>
     <File Include="bin/_GLOBAL.dll">
-      <publishTime>06/23/2019 00:44:24</publishTime>
+      <publishTime>06/30/2019 00:38:40</publishTime>
     </File>
     <File Include="css/angular-material.min.css">
       <publishTime>06/22/2019 09:56:18</publishTime>
@@ -122,6 +152,9 @@ en modifiant ce fichier MSBuild. Pour en savoir plus à ce sujet, consultez la p
     </File>
     <File Include="Files/DownLoad/Analyse Digitale 1812 vérif ok.xlsx">
       <publishTime>06/23/2019 00:48:23</publishTime>
+    </File>
+    <File Include="Files/Repository/GlobalPayLoad.xml">
+      <publishTime>06/25/2019 23:10:15</publishTime>
     </File>
     <File Include="Files/UpLoad/Analyse Digitale 1812 vérif ok.xlsx">
       <publishTime>05/05/2019 12:32:21</publishTime>
@@ -166,7 +199,7 @@ en modifiant ce fichier MSBuild. Pour en savoir plus à ce sujet, consultez la p
       <publishTime>06/22/2019 10:28:06</publishTime>
     </File>
     <File Include="index.html">
-      <publishTime>06/22/2019 21:49:36</publishTime>
+      <publishTime>06/29/2019 15:07:00</publishTime>
     </File>
     <File Include="packages.config">
       <publishTime>06/22/2019 09:52:44</publishTime>

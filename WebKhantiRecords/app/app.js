@@ -87,6 +87,17 @@
             templateUrl: 'app/app.TestKhanti/loginPage.html',
             controller: 'loginPageCtrl',
         });
+
+        $routeProvider.when('/pageArtiste', {
+            templateUrl: 'app/app.TestKhanti/pageArtiste.html',
+            controller: 'pageArtisteCtrl',
+        });
+
+        $routeProvider.when('/adminChoixArtiste', {
+            templateUrl: 'app/app.TestKhanti/adminChoixArtiste.html',
+            controller: 'adminChoixArtisteCtrl',
+        });
+
         
 
         $routeProvider.otherwise({
@@ -123,6 +134,7 @@
 
         $scope.login = "No login";
         $scope.etapeMenu = "login";
+        $scope.droit = "";
 
         function GetMyUserIdentity() {
             var param = {
@@ -152,9 +164,29 @@
             console.log(data);
             $scope.etapeMenu = "session";
             $scope.login = data.title;
-            $location.path('analyse2');
+
+            if (data.droit == "admin") {
+                $location.path('adminChoixArtiste');
+                $scope.droit = "admin";
+            }
+            else {
+                $location.path('pageArtiste');
+                $scope.droit = "user";
+            }
         });
 
+        $scope.$parent.$on("onLogout", function (e, data) {
+            console.log("Logout");
+            $scope.etapeMenu = "login";
+            $scope.login = "";
+            $scope.droit = "";
+        });
+
+        $scope.$parent.$on("onSelectArtiste", function (e, data) {
+            console.log("onSelectArtiste : " + data);
+            $location.path('pageArtiste');
+            $scope.droit = "user";
+        });
         
 
     }

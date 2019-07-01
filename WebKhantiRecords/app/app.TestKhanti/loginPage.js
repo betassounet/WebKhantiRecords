@@ -7,17 +7,19 @@
 
     function loginPageCtrl($scope, $http, $mdToast, $mdDialog, $sce, mainService) {
 
-        $scope.user = {
-            title: '',
-            email: '',
-            password: ''
-        };
+        $scope.user = new LoginUser();
 
         activate();
         function activate() {
         }
 
         $scope.Login = function () {
+            if ($scope.user.title == "admin") {
+                $scope.user.droit = "admin";
+            }
+            else {
+                $scope.user.droit = "user";
+            }
             mainService.Login($scope.user);
         }
     }

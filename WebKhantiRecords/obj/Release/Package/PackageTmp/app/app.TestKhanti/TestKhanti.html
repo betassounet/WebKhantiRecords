@@ -33,13 +33,34 @@
 </style>
 
 <div>
-    <hr/>
     <div layout="row">
         <div flex="15">
-            <!--<button type="button" class="btn btn-danger" data-ng-click="test(false)">Test sans détails</button>-->
-            <button type="button" class="btn btn-danger" data-ng-click="test(true)">Test Analyse</button>
+            <button type="button" class="btn btn-danger" data-ng-click="AnalyseFichiers()">Analyse Fichiers sur serveur</button>
         </div>
-        <div flex ng-show="RepTest">
+        <div flex>
+            <table>
+                <tr ng-repeat="file in RepAnalyseFichiers.listIdFichiers">
+                    <td>{{file.Id}}</td>
+                    <td>{{file.sFileName}}</td>
+                    <td>{{file.sMessage}}</td>
+                    <td>{{file.sPeriode}}</td>
+                    <td>{{file.delayMs}} ms</td>
+                    <td><div ng-show="file.Error==0"><button type="button" class="btn btn-danger" data-ng-click="AnalyseFichier(file.sFileName)">Analyse</button></div></td>
+                </tr>
+            </table>
+
+            <!--<pre>
+{{RepAnalyseFichiers | json}}
+</pre>-->
+
+        </div>
+    </div>
+    <hr/>
+    <div layout="row">
+        <!--<div flex="15">
+            <button type="button" class="btn btn-danger" data-ng-click="test(true)">Test Analyse</button>
+        </div>-->
+        <div flex="15" ng-show="RepTest">
             <div>ExecutionTimeMs : {{RepTest.ExecutionTimeMs}}</div>
             <div>sMessage : {{RepTest.sMessage}}</div>
             <div>TotalDownload : {{RepTest.TotalDownload}}</div>

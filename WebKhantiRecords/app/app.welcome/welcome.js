@@ -12,6 +12,7 @@
 
         activate();
         function activate() {
+            mainService.logOut();
         }
 
         $scope.Test = function () {

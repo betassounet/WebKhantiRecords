@@ -81,12 +81,17 @@
     <Content Include="app\app.Maintenance\Maintenance.js" />
     <Content Include="app\app.NoSqlEval\nosqlEval.html" />
     <Content Include="app\app.NoSqlEval\nosqlEval.js" />
+    <Content Include="app\app.TestKhanti\adminChoixArtiste.html" />
+    <Content Include="app\app.TestKhanti\adminChoixArtiste.js" />
     <Content Include="app\app.TestKhanti\Analyse2.html" />
     <Content Include="app\app.TestKhanti\Analyse2.js" />
     <Content Include="app\app.TestKhanti\loginPage.html" />
     <Content Include="app\app.TestKhanti\loginPage.js" />
+    <Content Include="app\app.TestKhanti\pageArtiste.html" />
+    <Content Include="app\app.TestKhanti\pageArtiste.js" />
     <Content Include="app\app.TestKhanti\TestKhanti.html" />
     <Content Include="app\app.TestKhanti\TestKhanti.js" />
+    <Content Include="app\app.TestKhanti\_models.js" />
     <Content Include="app\app.welcome\welcome.html" />
     <Content Include="app\app.welcome\welcome.js" />
     <Content Include="app\appMainService.js" />
@@ -97,6 +102,7 @@
     <Content Include="css\bootstrap.min.css" />
     <Content Include="css\material-icons.css" />
     <Content Include="favicon.ico" />
+    <Content Include="Files\Repository\GlobalPayLoad.xml" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="img\image-not-found.jpg" />
@@ -117,9 +123,6 @@
     <Content Include="Scripts\go.js" />
     <Content Include="Scripts\highstock.js" />
     <Content Include="Files\UpLoad\Analyse Digitale 1812 vérif ok.xlsx" />
-    <Content Include="Files\UpLoad\Khanti Records DIG - 70265 - 0119.xlsx" />
-    <Content Include="Files\UpLoad\Khanti Records DIG - 70265 - 1218.xlsx" />
-    <Content Include="Files\UpLoad\Khanti Records DIG - 70265 - DIGI - 05 2019.xlsx" />
     <Content Include="Files\UpLoad\TestUpLoad.xlsx" />
     <Content Include="Files\DownLoad\Analyse Digitale 1812 vérif ok.xlsx" />
     <None Include="Properties\PublishProfiles\Fichier.pubxml" />
@@ -161,7 +164,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Files\Repository\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>

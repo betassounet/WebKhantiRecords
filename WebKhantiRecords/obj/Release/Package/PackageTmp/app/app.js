@@ -78,6 +78,26 @@
             controller: 'testKhantiCtrl',
         });
 
+        $routeProvider.when('/analyse2', {
+            templateUrl: 'app/app.TestKhanti/Analyse2.html',
+            controller: 'Analyse2Ctrl',
+        });
+
+        $routeProvider.when('/login', {
+            templateUrl: 'app/app.TestKhanti/loginPage.html',
+            controller: 'loginPageCtrl',
+        });
+
+        $routeProvider.when('/pageArtiste', {
+            templateUrl: 'app/app.TestKhanti/pageArtiste.html',
+            controller: 'pageArtisteCtrl',
+        });
+
+        $routeProvider.when('/adminChoixArtiste', {
+            templateUrl: 'app/app.TestKhanti/adminChoixArtiste.html',
+            controller: 'adminChoixArtisteCtrl',
+        });
+
         
 
         $routeProvider.otherwise({
@@ -100,9 +120,9 @@
    
 
     // Controller appCtrl au besoin..
-    app.controller('appCtrl', ['$scope', '$http', '$location', 'GlobalService', appCtrl]);
+    app.controller('appCtrl', ['$scope', '$http', '$location', 'GlobalService', 'mainService', appCtrl]);
 
-    function appCtrl($scope, $http, $location, GlobalService) {
+    function appCtrl($scope, $http, $location, GlobalService, mainService) {
         $scope.myData = "Pas Init";
         $scope.VisuMenu = false;
         $scope.ImageLogo = "./img/LOGO_khanti_couleurs-e1558105770391.png";
@@ -112,6 +132,9 @@
             GetMyUserIdentity();
         }
 
+        $scope.login = "No login";
+        $scope.etapeMenu = "login";
+        $scope.droit = "";
 
         function GetMyUserIdentity() {
             var param = {
@@ -129,6 +152,43 @@
                 alert("Probleme appel Web API sur URL : " + BASE_URL_API +"\nAdapter URL Base Web API ou \n voir CORS policy ??");
             });
         }
+
+        $scope.$parent.$on("onEnterPage", function (e, data) {
+            //$scope.$apply(function () {
+                console.log("recu");
+            //});
+        });
+
+        $scope.$parent.$on("onLogin", function (e, data) {
+            console.log("recu loging :");
+            console.log(data);
+            $scope.etapeMenu = "session";
+            $scope.login = data.title;
+
+            if (data.droit == "admin") {
+                $location.path('adminChoixArtiste');
+                $scope.droit = "admin";
+            }
+            else {
+                $location.path('pageArtiste');
+                $scope.droit = "user";
+            }
+        });
+
+        $scope.$parent.$on("onLogout", function (e, data) {
+            console.log("Logout");
+            $scope.etapeMenu = "login";
+            $scope.login = "";
+            $scope.droit = "";
+        });
+
+        $scope.$parent.$on("onSelectArtiste", function (e, data) {
+            console.log("onSelectArtiste : " + data);
+            $location.path('pageArtiste');
+            $scope.droit = "user";
+        });
+        
+
     }
 
 
