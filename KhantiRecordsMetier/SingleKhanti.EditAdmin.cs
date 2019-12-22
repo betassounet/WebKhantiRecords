@@ -187,7 +187,9 @@ namespace KhantiRecordsMetier {
 
                 foreach( var v in rep.listItemNameResolution){
                     var listAlias = rep.listItemNameResolution.Where(c => c.CodeName == v.CodeName).ToList();
+                    int idAliasInc = 0;
                     foreach( var a in listAlias) {
+                        v.AliasId = idAliasInc++;
                         v.listItemAlias.Add(new ItemAlias() { Id = a.Id, CodeName = a.CodeName, sPbAscci =a.sPbAscci , ExcelName = a.ExcelName });
                     }
 
@@ -360,6 +362,7 @@ namespace KhantiRecordsMetier {
         public string CodeName;
         public string sPbAscci;
         public List<string> listProduct;
+        public int AliasId;
         public List<ItemAlias> listItemAlias;
         public List<ItemArtiste> listItemArtiste;
     }

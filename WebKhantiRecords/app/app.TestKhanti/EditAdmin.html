@@ -67,15 +67,18 @@
                         </tr>
                         <tr ng-repeat="a in RepGetNameResolutionPath.listItemNameResolution" ng-init="a.plus=false;">
                             <td>{{a.Id}}</td>
-                            <td>{{a.ExcelName}}</td>
+                            <td>[{{a.AliasId}}]{{a.ExcelName}}</td>
                             <td>
                                 <div ng-repeat="alias in a.listItemAlias">
-                                    {{alias.Id}} / {{alias.ExcelName}} / {{alias.sPbAscci}}
+                                    <span>[{{alias.Id}}] {{alias.ExcelName}}</span>
+                                    <span ng-show="alias.sPbAscci" style="color:red;">/ {{alias.sPbAscci}}</span>
+                                     
                                 </div>
                             </td>
                             <td>
                                 <div ng-repeat="feat in a.listItemArtiste">
-                                    {{feat.Id}} / {{feat.ArtistelName}} / {{feat.sPbAscci}}
+                                    <span>[{{feat.Id}}] {{feat.ArtistelName}}</span>
+                                    <span ng-show="feat.sPbAscci" style="color:red;">/ {{feat.sPbAscci}}</span>
                                 </div>
                             </td>
                             <td>
@@ -91,9 +94,9 @@
                 </div>
             </div>
 
-            <pre>
+            <!--<pre>
 {{RepGetNameResolutionPath | json}}
-</pre>
+</pre>-->
 
         </md-tab-body>
     </md-tab>
