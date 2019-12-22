@@ -14,7 +14,6 @@ C:\GIT2019\WebKhantiRecords\WebKhantiRecords\bin\fr\System.Web.Http.resources.dl
 C:\GIT2019\WebKhantiRecords\WebKhantiRecords\bin\fr\System.Web.Http.WebHost.resources.dll
 C:\GIT2019\WebKhantiRecords\WebKhantiRecords\obj\Debug\WebKhantiRecords.dll
 C:\GIT2019\WebKhantiRecords\WebKhantiRecords\obj\Debug\WebKhantiRecords.pdb
-C:\GIT2019\WebKhantiRecords\WebKhantiRecords\obj\Debug\WebKhantiRecords.csprojResolveAssemblyReference.cache
 C:\GIT2019\WebKhantiRecords\WebKhantiRecords\bin\_GLOBAL.dll
 C:\GIT2019\WebKhantiRecords\WebKhantiRecords\bin\ExcelPackage.dll
 C:\GIT2019\WebKhantiRecords\WebKhantiRecords\bin\_GLOBAL.pdb
@@ -48,3 +47,6 @@ D:\Etude\WebKhantiRecords\WebKhantiRecords\bin\fr\System.Web.Http.WebHost.resour
 D:\Etude\WebKhantiRecords\WebKhantiRecords\obj\Debug\WebKhantiRecords.csprojResolveAssemblyReference.cache
 D:\Etude\WebKhantiRecords\WebKhantiRecords\obj\Debug\WebKhantiRecords.dll
 D:\Etude\WebKhantiRecords\WebKhantiRecords\obj\Debug\WebKhantiRecords.pdb
+C:\GIT2019\WebKhantiRecords\WebKhantiRecords\obj\Debug\WebKhantiRecords.csprojAssemblyReference.cache
+C:\GIT2019\WebKhantiRecords\WebKhantiRecords\obj\Debug\WebKhantiRecords.csproj.CoreCompileInputs.cache
+C:\GIT2019\WebKhantiRecords\WebKhantiRecords\obj\Debug\WebKhantiRecords.csproj.CopyComplete

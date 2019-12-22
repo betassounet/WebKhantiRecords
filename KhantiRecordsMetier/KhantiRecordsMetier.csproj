@@ -50,6 +50,7 @@
   <ItemGroup>
     <Compile Include="SingleConvertToPDF.cs" />
     <Compile Include="SingleExcel.cs" />
+    <Compile Include="SingleKhanti.EditAdmin.cs" />
     <Compile Include="SingleKhanti.Analyse1.cs" />
     <Compile Include="SingleKhanti.Analyse2.cs" />
     <Compile Include="SingleKhanti._Init.cs" />

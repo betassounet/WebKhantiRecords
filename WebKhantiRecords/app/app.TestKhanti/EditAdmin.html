@@ -1,0 +1,239 @@
+﻿<style>
+    table {
+        width: 100%;
+    }
+
+    table, th, td {
+        /*border: 1px solid black;*/
+        border: none
+        border-collapse: collapse;
+    }
+
+    th, td {
+        padding: 5px;
+        text-align: left;
+    }
+
+    table#t01 tr:nth-child(even) {
+        background-color: #eee;
+    }
+
+    table#t01 tr:nth-child(odd) {
+        background-color: #fff;
+    }
+
+    table#t01 th {
+        background-color: gray;
+        color: white;
+    }
+
+    .tdEntete {
+        writing-mode: vertical-lr;
+        text-orientation: sideways;
+    }
+
+    #tableHolder
+ {
+ /*width: 300px;*/
+ height: 1000px;
+ overflow: scroll
+}
+
+
+</style>
+ 
+<!--<button type="button" class="btn btn-danger" data-ng-click="GetDispoDataFromGlobal()">GetDispoDataFromGlobal</button>-->
+
+
+<md-tabs md-dynamic-height md-border-bottom>
+
+    <md-tab>
+        <md-tab-label>
+            Name Resolution Path
+        </md-tab-label>
+        <md-tab-body>
+            <button type="button" class="btn btn-danger" data-ng-click="GetNameResolutionPath()">Get Analyse Resolution</button>
+
+            <div layout="row">
+                <div flex="60">
+                    <table id="t01">
+                        <tr>
+                            <th>Id</th>
+                            <th>Name</th>
+                            <th>Alias / pb</th>
+                            <th>Feat </th>
+                            <th></th>
+                            <th>plus</th>
+                        </tr>
+                        <tr ng-repeat="a in RepGetNameResolutionPath.listItemNameResolution" ng-init="a.plus=false;">
+                            <td>{{a.Id}}</td>
+                            <td>{{a.ExcelName}}</td>
+                            <td>
+                                <div ng-repeat="alias in a.listItemAlias">
+                                    {{alias.Id}} / {{alias.ExcelName}} / {{alias.sPbAscci}}
+                                </div>
+                            </td>
+                            <td>
+                                <div ng-repeat="feat in a.listItemArtiste">
+                                    {{feat.Id}} / {{feat.ArtistelName}} / {{feat.sPbAscci}}
+                                </div>
+                            </td>
+                            <td>
+                                <button type="button" class="btn btn-danger" data-ng-click="a.plus =! a.plus">+</button>
+                            </td>
+                            <td>
+                                <div ng-show="a.plus" ng-repeat="p in a.listProduct">
+                                    {{p}}
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <pre>
+{{RepGetNameResolutionPath | json}}
+</pre>
+
+        </md-tab-body>
+    </md-tab>
+
+    <md-tab>
+        <md-tab-label>
+            Proto 1
+        </md-tab-label>
+        <md-tab-body>
+
+            <div layout="row">
+                <div flex="25">
+                    <h2>Raw</h2>
+                    <uib-accordion>
+                        <div uib-accordion-group class="panel-default" ng-repeat="item in RepGetEntityArtists.listEntityArtist" ng-show="item.Source == 1">
+                            <uib-accordion-heading>
+                                {{item.Id}} [{{item.Source}}]   {{item.Name}}
+                            </uib-accordion-heading>
+                            <pre>
+{{item | json}}
+</pre>
+
+                        </div>
+                    </uib-accordion>
+
+                </div>
+                <div flex="25">
+                    <h2>Decode Feat</h2>
+                    <uib-accordion>
+                        <div uib-accordion-group class="panel-default" ng-repeat="item in RepGetEntityArtists.listEntityArtist" ng-show="item.Source == 2">
+                            <uib-accordion-heading>
+                                {{item.Id}}  [{{item.Source}}]  {{item.Name}}
+                            </uib-accordion-heading>
+                            <pre>
+{{item | json}}
+</pre>
+
+                        </div>
+                    </uib-accordion>
+                </div>
+                <div flex="10">
+                </div>
+
+                <div flex="40">
+                    <h2>Artiste Admin File</h2>
+                    <uib-accordion>
+                        <div uib-accordion-group class="panel-default" ng-repeat="item in RepGetEntityArtists.artistsAdminFile.listArtistAdminItems">
+                            <uib-accordion-heading>
+                                {{item.IdArtist}} {{item.ArtistName}}
+                            </uib-accordion-heading>
+                            <pre>
+{{item | json}}
+</pre>
+                        </div>
+                    </uib-accordion>
+                </div>
+            </div>
+
+
+        </md-tab-body>
+    </md-tab>
+    <md-tab>
+        <md-tab-label>
+            Proto 0
+        </md-tab-label>
+        <md-tab-body>
+
+            <div layout="row">
+                <div flex="20">
+                    <md-select ng-model="selectedArtist">
+                        <!--<md-option><em> None</em></md-option>-->
+                        <md-option ng-repeat="item in RepGetDispoDataFromGlobal.listDispoArtist" ng-value="item">
+                            {{item.Artist}}
+                        </md-option>
+                    </md-select>
+
+
+                </div>
+                <div flex="5">
+
+                </div>
+                <div flex="30">
+                    <table id="t01">
+                        <tr>
+                            <th width="">Product</th>
+                            <th>ISRC/BC</th>
+                            <th>%</th>
+                            <th>Select</th>
+                        </tr>
+                        <tr ng-repeat="p in selectedArtist.listDispoProduct">
+                            <td>{{p.Product}}</td>
+                            <td><div>{{p.ISRC}}</div><div><b>{{p.Barcode}}</b></div></td>
+                            <td><input type="number" style="width:50px" min="0" max="100" /></td>
+                            <td><button type="button" class="btn btn-warning" data-ng-click="SelectArtistAndProduct(selectedArtist.Artist, p)">Select</button></td>
+                        </tr>
+                    </table>
+
+                    <!--<pre>
+                            {{selectedArtist | json}}
+                    </pre>-->
+                </div>
+                <div flex="5">
+
+                </div>
+                <div flex="30">
+                    <table id="t01">
+                        <tr>
+                            <th>Artist</th>
+                            <th>Product</th>
+                            <th>ISRC/BC</th>
+                            <th>Select</th>
+                        </tr>
+                        <tr ng-repeat="p in SelectedArtistProduct">
+                            <td>{{p.artistName}}</td>
+                            <td>{{p.product.Product}}</td>
+                            <td><div>{{p.product.ISRC}}</div><div>{{p.product.Barcode}}</div></td>
+                            <td><button type="button" class="btn btn-danger" data-ng-click="UnSelectArtistAndProduct(p)">X</button></td>
+                        </tr>
+                    </table>
+
+
+
+        <!--<pre>
+{{SelectedArtistProduct | json }}
+</pre>-->
+
+                </div>
+            </div>
+
+        </md-tab-body>
+    </md-tab>
+
+</md-tabs>
+
+
+
+
+
+
+<!--<pre>
+
+{{ RepGetDispoDataFromGlobal | json}}
+</pre>-->

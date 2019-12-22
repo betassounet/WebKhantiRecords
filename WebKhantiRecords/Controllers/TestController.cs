@@ -10,8 +10,7 @@ using System.Web.Http;
 
 namespace WebKhantiRecords.Controllers
 {
-    public class TestController : ApiController
-    {
+    public class TestController : ApiController {
 
         [HttpPost]
         public RepTest AnalyseFichier(ParamTest param) {
@@ -49,6 +48,30 @@ namespace WebKhantiRecords.Controllers
         public RepDetailArtisteV2 GetDetailArtisteV2(ParamDetailArtisteV2 param) {
             var sw = SinglePerformanceLogger.Instance().StartStopWatch(HttpContext.Current.Request);
             var returnValue = SingleKhanti.Instance().GetDetailArtisteV2(param);
+            returnValue.ExecutionTimeMs = SinglePerformanceLogger.Instance().StopStopWatch(sw);
+            return returnValue;
+        }
+
+        [HttpPost]
+        public DispoDataFromGlobal GetDispoDataFromGlobal(ParamDispoDataFromGlobal param) {
+            var sw = SinglePerformanceLogger.Instance().StartStopWatch(HttpContext.Current.Request);
+            var returnValue = SingleKhanti.Instance().GetDispoDataFromGlobal(param);
+            returnValue.ExecutionTimeMs = SinglePerformanceLogger.Instance().StopStopWatch(sw);
+            return returnValue;
+        }
+
+        [HttpPost]
+        public DispoEntityArtists GetEntityArtists(ParamEntityArtists param) {
+            var sw = SinglePerformanceLogger.Instance().StartStopWatch(HttpContext.Current.Request);
+            var returnValue = SingleKhanti.Instance().GetEntityArtists(param);
+            returnValue.ExecutionTimeMs = SinglePerformanceLogger.Instance().StopStopWatch(sw);
+            return returnValue;
+        }
+
+        [HttpPost]
+        public NameResolutionPath GetNameResolutionPath(ParamNameResolutionPath Param) {
+            var sw = SinglePerformanceLogger.Instance().StartStopWatch(HttpContext.Current.Request);
+            var returnValue = SingleKhanti.Instance().GetNameResolutionPath(Param);
             returnValue.ExecutionTimeMs = SinglePerformanceLogger.Instance().StopStopWatch(sw);
             return returnValue;
         }

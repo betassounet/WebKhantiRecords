@@ -15,15 +15,18 @@ namespace KhantiRecordsMetier
     {
 
         List<string> listUrlImageArtiste;
+        List<string> listUrlImageArtisteLocal;
         RepAnalyseFichiers repAnalyseFichiers;
         GlobalLinePayLoad globalLinePayLoad;
+        ArtistsAdminFile artistsAdminFile;
 
         #region Constructeur Singleton
 
         protected static SingleKhanti instance;
 
         protected SingleKhanti() {
-            Init();
+            //InitRecherchePhotoSurWeb();
+            InitImageLocal();
             LoadRepository();
         }
 
@@ -53,12 +56,28 @@ namespace KhantiRecordsMetier
             FastSerialisation.Instance().SaveStructInCurrentDirectory<GlobalLinePayLoad>(globalLinePayLoad, sPathRepoFile);
         }
 
+        private ArtistsAdminFile LoadArtistsAdminFile() {
+            string sPathDirectory = System.AppDomain.CurrentDomain.BaseDirectory;
+            string sPathRepoFile = sPathDirectory + "\\Files\\Repository\\ArtistsAdminFile.xml";
+            artistsAdminFile = FastSerialisation.Instance().GetSaveStructInCurrentDirectory<ArtistsAdminFile>(sPathRepoFile);
+            if (artistsAdminFile == null) {
+                artistsAdminFile = new ArtistsAdminFile() { listArtistAdminItems = new List<ArtistAdminItem>() };
+            }
+            return artistsAdminFile;
+        }
+
+        private void SaveArtistsAdminFile() {
+            string sPathDirectory = System.AppDomain.CurrentDomain.BaseDirectory;
+            string sPathRepoFile = sPathDirectory + "\\Files\\Repository\\ArtistsAdminFile.xml";
+            FastSerialisation.Instance().SaveStructInCurrentDirectory<ArtistsAdminFile>(artistsAdminFile, sPathRepoFile);
+        }
+
         #endregion
 
 
         #region Init Recherche sur site web khanti.fr des photos
 
-        private void Init() {
+        private void InitRecherchePhotoSurWeb() {
 
             // On va chercher sur la page du site khanti.fr les url des images des artistes..
             // pour cela on fait une requete web sur le site et on va essayer de parser le contenu..
@@ -106,6 +125,24 @@ namespace KhantiRecordsMetier
 
         #endregion
 
+        void InitImageLocal() {
+            listUrlImageArtisteLocal = new List<string>();
+            string sPathDirectory = System.AppDomain.CurrentDomain.BaseDirectory;
+            string sPathImageArtistes = sPathDirectory + "\\img\\Artistes";
+            try {
+                var listTmp = Directory.GetFiles(sPathImageArtistes).ToList();
+                foreach( var f in listTmp) {
+                    string fileSeul = f.Replace(sPathImageArtistes + "\\", "");
+                    listUrlImageArtisteLocal.Add(fileSeul.Trim());
+                }
+                
+            }
+            catch (Exception ex) {
+                SingleLogFileAsXml.Instance().AjouteLog("SingleKhanti", "Init : Exception " + ex.Message);
+            }
+            
+        }
+
 
         #region Analyse des fichiers excel presents sur disque
 
@@ -145,10 +182,19 @@ namespace KhantiRecordsMetier
                 tempArt = tempArt.Replace(" ", "-");
                 tempArt = tempArt.ToLower();
                 NomRecherche = tempArt;
+                bool isOK = false;
                 if (listUrlImageArtiste != null) {
                     var exist = listUrlImageArtiste.Where(c => c.Contains(tempArt)).FirstOrDefault();
                     if (exist != null) {
                         url = @"http://khanti.fr/wp-content/uploads/2019/05/" + exist;
+                        isOK = true;
+                    }
+                }
+                // si non OK liste de secours..
+                if (!isOK) {
+                    var exist = listUrlImageArtisteLocal.Where(c => c.Contains(tempArt)).FirstOrDefault();
+                    if (exist != null) {
+                        url = @"./img/Artistes/"+ exist;
                     }
                 }
             }

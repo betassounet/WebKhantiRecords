@@ -20,6 +20,8 @@
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
     <TargetFrameworkProfile />
+    <Use64BitIISExpress />
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -85,6 +87,8 @@
     <Content Include="app\app.TestKhanti\adminChoixArtiste.js" />
     <Content Include="app\app.TestKhanti\Analyse2.html" />
     <Content Include="app\app.TestKhanti\Analyse2.js" />
+    <Content Include="app\app.TestKhanti\EditAdmin.html" />
+    <Content Include="app\app.TestKhanti\EditAdmin.js" />
     <Content Include="app\app.TestKhanti\loginPage.html" />
     <Content Include="app\app.TestKhanti\loginPage.js" />
     <Content Include="app\app.TestKhanti\pageArtiste.html" />
@@ -100,11 +104,43 @@
     <Content Include="app\nav.html" />
     <Content Include="css\angular-material.min.css" />
     <Content Include="css\bootstrap.min.css" />
+    <Content Include="css\dx\dx.common.css" />
+    <Content Include="css\dx\dx.light.css" />
+    <Content Include="css\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="css\material-icons.css" />
     <Content Include="favicon.ico" />
     <Content Include="Files\Repository\GlobalPayLoad.xml" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="img\Artistes\aluna-project-150x150.jpg" />
+    <Content Include="img\Artistes\black-roots-150x150.jpg" />
+    <Content Include="img\Artistes\black-ship-150x150.jpg" />
+    <Content Include="img\Artistes\bob-charley-150x150.jpg" />
+    <Content Include="img\Artistes\bobo-yovo-150x150.jpg" />
+    <Content Include="img\Artistes\bronco-knowledge-150x150.jpg" />
+    <Content Include="img\Artistes\devi-reed-150x150.jpg" />
+    <Content Include="img\Artistes\golpe-seko-150x150.jpg" />
+    <Content Include="img\Artistes\jah-legacy-150x150.jpg" />
+    <Content Include="img\Artistes\julia-biel-150x150.jpg" />
+    <Content Include="img\Artistes\karigan-150x150.jpg" />
+    <Content Include="img\Artistes\le-bois-bleu-150x150.jpg" />
+    <Content Include="img\Artistes\letoyo-150x150.jpg" />
+    <Content Include="img\Artistes\lyricson-150x150.jpg" />
+    <Content Include="img\Artistes\marius-solal-150x150.jpg" />
+    <Content Include="img\Artistes\mawyd-150x150.jpg" />
+    <Content Include="img\Artistes\mister-nils-150x150.jpg" />
+    <Content Include="img\Artistes\mystical-faya-150x150.jpg" />
+    <Content Include="img\Artistes\nai-jah-150x150.jpg" />
+    <Content Include="img\Artistes\natural-mighty-150x150.jpg" />
+    <Content Include="img\Artistes\odaflaw-150x150.jpg" />
+    <Content Include="img\Artistes\omar-perry-150x150.jpg" />
+    <Content Include="img\Artistes\solar-project-150x150.jpg" />
+    <Content Include="img\Artistes\soom-t-150x150.jpg" />
+    <Content Include="img\Artistes\the-banyans-150x150.jpg" />
+    <Content Include="img\Artistes\the-soul-papaz-150x150.jpg" />
+    <Content Include="img\Artistes\the-soul-sonics-150x150.jpg" />
+    <Content Include="img\Artistes\the-tuff-lions-150x150.jpg" />
+    <Content Include="img\Artistes\thomas-broussard-150x150.jpeg" />
     <Content Include="img\image-not-found.jpg" />
     <Content Include="img\LOGO_khanti_couleurs-e1558105770391.png" />
     <Content Include="img\slider_homepage.jpg" />
@@ -120,11 +156,27 @@
     <Content Include="Scripts\cdn\angular1.6.1\angular.js" />
     <Content Include="Scripts\cdn\ui-bootstrap-tpls-2.5.0.js" />
     <Content Include="Scripts\d3.js" />
+    <Content Include="Scripts\dx\angular.min.js" />
+    <Content Include="Scripts\dx\dx.all.js" />
+    <Content Include="Scripts\dx\jquery.min.js" />
     <Content Include="Scripts\go.js" />
     <Content Include="Scripts\highstock.js" />
     <Content Include="Files\UpLoad\Analyse Digitale 1812 vérif ok.xlsx" />
     <Content Include="Files\UpLoad\TestUpLoad.xlsx" />
     <Content Include="Files\DownLoad\Analyse Digitale 1812 vérif ok.xlsx" />
+    <Content Include="css\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="css\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="css\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="css\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="css\dx\icons\dxicons.ttf" />
+    <Content Include="css\dx\icons\dxicons.woff" />
+    <Content Include="css\dx\icons\dxicons.woff2" />
+    <Content Include="css\dx\icons\dxiconsios.ttf" />
+    <Content Include="css\dx\icons\dxiconsios.woff" />
+    <Content Include="css\dx\icons\dxiconsios.woff2" />
+    <Content Include="css\dx\icons\dxiconsmaterial.ttf" />
+    <Content Include="css\dx\icons\dxiconsmaterial.woff" />
+    <Content Include="css\dx\icons\dxiconsmaterial.woff2" />
     <None Include="Properties\PublishProfiles\Fichier.pubxml" />
     <None Include="Scripts\jquery-3.2.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.2.1.js" />

@@ -2,7 +2,8 @@
     'use strict';
 
     //var app = angular.module('app', ['ngRoute', 'ui.bootstrap', 'ngMaterial']);
-    var app = angular.module('app', ['ngRoute', 'ui.bootstrap', 'ngSanitize', 'ngMaterial', 'ui.codemirror']);   // New ajout de 'ui.codemirror' pour test de l'editeur de code..
+    //var app = angular.module('app', ['ngRoute', 'ui.bootstrap', 'ngSanitize', 'ngMaterial', 'ui.codemirror']);   // New ajout de 'ui.codemirror' pour test de l'editeur de code..
+    var app = angular.module('app', ['ngRoute', 'ui.bootstrap', 'ngSanitize', 'ngMaterial','dx']);   // On retire pour dans le cas ou on a pas internet..
     //var app = angular.module('app', []);
 
 
@@ -98,7 +99,11 @@
             controller: 'adminChoixArtisteCtrl',
         });
 
-        
+        $routeProvider.when('/editAdmin01', {
+            templateUrl: 'app/app.TestKhanti/EditAdmin.html',
+            controller: 'EditAdminCtrl',
+        });
+
 
         $routeProvider.otherwise({
             redirectTo: '/'
