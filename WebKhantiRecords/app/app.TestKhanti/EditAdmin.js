@@ -62,6 +62,14 @@
             });
         }
         
+        $scope.GetArtisteAndResolutionPath = function () {
+            var param = {
+                sAction: '',
+            };
+            $http.post("api/Test/GetArtisteAndResolutionPath", param).then(function (response) {
+                $scope.RepGetArtisteAndResolutionPath = response.data;
+            });
+        }
 
         //-----------------------------------------------------------------------------------------------
 

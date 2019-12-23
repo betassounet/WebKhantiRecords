@@ -166,7 +166,7 @@ namespace KhantiRecordsMetier {
         }
 
         public NameResolutionPath GetNameResolutionPath(ParamNameResolutionPath Param) {
-            NameResolutionPath rep = new NameResolutionPath() { listItemNameResolution = new List<ItemNameResolution>(), listItemArtiste = new List<ItemArtiste>() };
+            NameResolutionPath rep = new NameResolutionPath() { listItemNameResolution = new List<ItemNameResolution>(), listItemArtiste = new List<ItemArtiste>()};
             Idinc = 0;
             int IdArtistInc = 0;
 
@@ -177,23 +177,36 @@ namespace KhantiRecordsMetier {
                     string sPbAscci = "";
                     string CodeName = GetCodeName(ExcelNameArtist, ref sPbAscci);
                     if (nameExist == null) {
-                        nameExist = new ItemNameResolution() { Id = Idinc++, ExcelName = ExcelNameArtist, CodeName = CodeName, sPbAscci = sPbAscci, listItemAlias =new List<ItemAlias>(), listItemArtiste = new List<ItemArtiste>(), listProduct = new List<string>() };
+                        nameExist = new ItemNameResolution() { Id = Idinc++, ExcelName = ExcelNameArtist, CodeName = CodeName, sPbAscci = sPbAscci, listItemAlias =new List<ItemAlias>(), listItemArtiste = new List<ItemArtiste>(), listProduct = new List<ItemProduct>() };
                         rep.listItemNameResolution.Add(nameExist);
                     }
-                    var productExist = nameExist.listProduct.Where(c => c == v.Product).FirstOrDefault();
-                    if (productExist == null)
-                        nameExist.listProduct.Add(v.Product);
+                    string _Product = v.Product.Trim();
+                    string _ISRC = v.ISRC.Trim();
+                    _ISRC = _ISRC == "null" ? "" : _ISRC;
+                    string _Barcode = v.Barcode.Trim();
+                    _Barcode = _Barcode == "null" ? "" : _Barcode;
+                    string _FormatType = v.FormatType.Trim();
+                    var productExist = nameExist.listProduct.Where(c => c.Product == _Product && c.ISRC == _ISRC && c.Barcode == _Barcode && c.FormatType == _FormatType).FirstOrDefault();
+                    if (productExist == null) {
+                        productExist = new ItemProduct() { Product = _Product, ISRC = _ISRC, Barcode = _Barcode, FormatType = _FormatType, DMS = "", PriceCategory = "" };
+                        nameExist.listProduct.Add(productExist);
+                    }
+                    if (!productExist.DMS.Contains(v.DMS.Trim()))
+                        productExist.DMS += v.DMS.Trim() + "/";
+                    if (!productExist.PriceCategory.Contains(v.PriceCategory.Trim()))
+                        productExist.PriceCategory += v.PriceCategory.Trim() + "/";
+                    productExist.CptDownload += v.DownloadQty;
                 }
 
                 foreach( var v in rep.listItemNameResolution){
-                    var listAlias = rep.listItemNameResolution.Where(c => c.CodeName == v.CodeName).ToList();
-                    int idAliasInc = 0;
+                    var listAlias = rep.listItemNameResolution.Where(c => c.CodeName == v.CodeName && c.Id != v.Id).ToList();
                     foreach( var a in listAlias) {
-                        v.AliasId = idAliasInc++;
                         v.listItemAlias.Add(new ItemAlias() { Id = a.Id, CodeName = a.CodeName, sPbAscci =a.sPbAscci , ExcelName = a.ExcelName });
                     }
+                    v.CptAlias = v.listItemAlias.Count();
 
                     var listFeat = GetListFeat(v.ExcelName);
+                    int CptPosFeat = 0;
                     foreach( var f in listFeat) {
                         string sPbAscci = "";
                         string codeNameArtist= GetCodeName(f, ref sPbAscci);
@@ -203,20 +216,25 @@ namespace KhantiRecordsMetier {
                             if(codeArtExist == null) {
                                 artExist = new ItemArtiste() { ArtistelName = f, ArtisteCodeName = codeNameArtist, Id = IdArtistInc++ , sPbAscci = sPbAscci };
                                 rep.listItemArtiste.Add(artExist);
-                                v.listItemArtiste.Add(artExist);
                             }
                             else {
                                 codeArtExist.sPbAscci += sPbAscci;
-                                v.listItemArtiste.Add(codeArtExist);
+                                artExist = codeArtExist;
                             }
                         }
-                        else {
-                            v.listItemArtiste.Add(artExist);
+                        v.listItemArtiste.Add(artExist);
+                        artExist.CptPresenceInRawName++;
+                        if (CptPosFeat == 0){
+                            artExist.CptPosFirstArtiste++;
+                            v.FirstArtisteName = artExist.ArtistelName;
                         }
+                        else {
+                            artExist.CptPosFeaturing++;
+                        }
+                        CptPosFeat++;
                     }
+                    v.listProduct = v.listProduct.OrderBy(c => c.Product).ToList(); 
                 }
-
-
             }
 
             rep.listItemNameResolution = rep.listItemNameResolution.OrderBy(c => c.CodeName).ToList();
@@ -251,6 +269,77 @@ namespace KhantiRecordsMetier {
 
             return listRep;
         }
+
+
+        public ArtisteAndResolutionPath GetArtisteAndResolutionPath(ParamArtisteAndResolutionPath Param) {
+            ArtisteAndResolutionPath rep = new ArtisteAndResolutionPath() { listArtisteAndRawData = new List<ArtisteAndRawData>() };
+            var phase1 = GetNameResolutionPath(new ParamNameResolutionPath());
+            phase1.listItemArtiste = phase1.listItemArtiste.OrderBy(c => c.ArtistelName).ToList();
+            int IdAdminArtiste = 0;
+            foreach (var v in phase1.listItemArtiste) {
+                ArtisteAndRawData artisteAndRawData = new ArtisteAndRawData() { NameArtiste = v.ArtistelName };
+                artisteAndRawData.artisteDataAdmin = new ArtisteDataAdmin() { Id = IdAdminArtiste++, AnalyseArtisteName = v.ArtistelName, Name = "", IsFirstArtist= false, sRefArtiste = "", listPayableDataAdmin = new List<PayableDataAdmin>() };
+                artisteAndRawData.listItemNameResolution = new List<ItemNameResolution>();
+                rep.listArtisteAndRawData.Add(artisteAndRawData);
+            }
+
+            foreach (var item in phase1.listItemNameResolution) {
+                var artisteAdminExist = rep.listArtisteAndRawData.Where(c => c.artisteDataAdmin.AnalyseArtisteName == item.FirstArtisteName).FirstOrDefault();
+                if (artisteAdminExist != null) {
+                    artisteAdminExist.artisteDataAdmin.IsFirstArtist = true;
+                    foreach (var product in item.listProduct) {
+
+                        bool TypeDownLoad=false;
+                        string refKey = product.ISRC;
+                        if (string.IsNullOrEmpty(refKey)) {
+                            TypeDownLoad = true;   // c'est un barcode ?
+                            refKey = product.Barcode;
+                        }
+                        if (!string.IsNullOrEmpty(refKey)) {
+                            var CurrentPayable = artisteAdminExist.artisteDataAdmin.listPayableDataAdmin.LastOrDefault();
+                            if (CurrentPayable == null) {
+                                CurrentPayable = new PayableDataAdmin() { Name = "", sRefProduct = "", listProductDataAdmin = new List<ProductDataAdmin>(), MaxDateTimeValidite = DateTime.Now };
+                                artisteAdminExist.artisteDataAdmin.listPayableDataAdmin.Add(CurrentPayable);
+                            }
+                            var productExist = CurrentPayable.listProductDataAdmin.Where(c => c.BarcodeOrISRC == refKey).FirstOrDefault();
+                            if (productExist == null) {
+                                productExist = new ProductDataAdmin() { FormatType = product.FormatType, Name = product.Product, BarcodeOrISRC = refKey, TypeDownload = TypeDownLoad, TypeStreaming = !TypeDownLoad, Ref = "", Type = "" };
+                                CurrentPayable.listProductDataAdmin.Add(productExist);
+                            }
+                        }
+                    }
+                    artisteAdminExist.listItemNameResolution.Add(item);
+                }
+                else {
+                    //PB
+                }
+                //item.FirstArtisteName
+            }
+
+            foreach (var v in rep.listArtisteAndRawData) {
+                if(v.NameArtiste == "Ackboo"){
+                    var first = v.artisteDataAdmin.listPayableDataAdmin.FirstOrDefault();
+                    if (first != null) {
+                        PayableDataAdmin clone = new PayableDataAdmin() { MaxDateTimeValidite = first.MaxDateTimeValidite.AddYears(1), listProductDataAdmin = first.listProductDataAdmin };
+                        v.artisteDataAdmin.listPayableDataAdmin.Add(clone);
+                    }
+                        
+                }
+                if (v.NameArtiste == "The Banyans") {
+                    var first = v.artisteDataAdmin.listPayableDataAdmin.FirstOrDefault();
+                    if (first != null) {
+                        PayableDataAdmin clone = new PayableDataAdmin() { MaxDateTimeValidite = first.MaxDateTimeValidite.AddYears(1), listProductDataAdmin = first.listProductDataAdmin };
+                        v.artisteDataAdmin.listPayableDataAdmin.Add(clone);
+                        v.artisteDataAdmin.listPayableDataAdmin.Add(clone);
+                    }
+                        
+                }
+                
+            }
+            
+            return rep;
+        }
+
 
     }
 
@@ -346,6 +435,25 @@ namespace KhantiRecordsMetier {
     }
 
 
+    //----------------------------------------------------------------------------------------------------
+    //----------------------------------------------------------------------------------------------------
+
+
+    public class ParamArtisteAndResolutionPath {
+
+    }
+
+    public class ArtisteAndResolutionPath {
+        public long ExecutionTimeMs;
+        public List<ArtisteAndRawData> listArtisteAndRawData;
+    }
+
+    public class ArtisteAndRawData {
+        public string NameArtiste;
+        public List<ItemNameResolution> listItemNameResolution;
+        public ArtisteDataAdmin artisteDataAdmin;
+    }
+
     public class ParamNameResolutionPath {
 
     }
@@ -361,8 +469,9 @@ namespace KhantiRecordsMetier {
         public string ExcelName;
         public string CodeName;
         public string sPbAscci;
-        public List<string> listProduct;
-        public int AliasId;
+        public int CptAlias;
+        public string FirstArtisteName;
+        public List<ItemProduct> listProduct;
         public List<ItemAlias> listItemAlias;
         public List<ItemArtiste> listItemArtiste;
     }
@@ -379,7 +488,55 @@ namespace KhantiRecordsMetier {
         public string ArtistelName;
         public string ArtisteCodeName;
         public string sPbAscci;
+        public int CptPresenceInRawName;
+        public int CptPosFirstArtiste;
+        public int CptPosFeaturing;
     }
+
+    public class ItemProduct {
+        public string Product;
+        public string ISRC;
+        public string Barcode;
+        public string FormatType;
+        public string PriceCategory;
+        public string DMS;
+        public int CptDownload;
+    }
+
+
+    // Modele Repository Données par Artistes..
+    // A la croisé des données reçues par le fichier excell harmonia mundi.. ( toutes les données de telechargement )
+    // et du fichier excel résultat Analyse Digitale..
+    // Hierarchie de donnée admin a envisager :
+
+    public class ArtisteDataAdmin {
+        public int Id;
+        public string sRefArtiste;   // Nouvelle notion pour referencer un artiste  // saisie MANU..
+        public string Name;       // Nom donné a l'artiste               // saisie MANU..
+        // reprise des données Item Artiste issu de l'analyse :
+        public string AnalyseArtisteName;
+        public bool IsFirstArtist;
+        public List<PayableDataAdmin> listPayableDataAdmin;
+    }
+
+    public class PayableDataAdmin {
+        public int Id;
+        public string sRefProduct;    // serait l'actuelle reference KHxxx   // saisie MANU
+        public string Name;   // NomAlbum..                 // Saisie MANU
+        public List<ProductDataAdmin> listProductDataAdmin;
+        public DateTime MaxDateTimeValidite;
+    }
+
+    public class ProductDataAdmin {
+        public string FormatType;   // en relation avec le format type Digital Track, Digital Album...du fichier excel ...
+        public bool TypeStreaming;
+        public bool TypeDownload;
+        public string Type;   // digital album / Digitalsingle ?? saisie MANU ??
+        public string Name;  // Saisie MANU .. correspond nom de product//  DigitalTrack dans streaming , Name dans Download..
+        public string Ref; // Ref  Saisie Manu ??
+        public string BarcodeOrISRC; // Ref unique ( c'est la clef finale );  // Ref unique ( c'est la clef finale )
+    }
+
 
     //[XmlAttribute]
     //public string Artist;

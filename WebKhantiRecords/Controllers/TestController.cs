@@ -76,5 +76,13 @@ namespace WebKhantiRecords.Controllers
             return returnValue;
         }
 
+        [HttpPost]
+        public ArtisteAndResolutionPath GetArtisteAndResolutionPath(ParamArtisteAndResolutionPath Param) {
+            var sw = SinglePerformanceLogger.Instance().StartStopWatch(HttpContext.Current.Request);
+            var returnValue = SingleKhanti.Instance().GetArtisteAndResolutionPath(Param);
+            returnValue.ExecutionTimeMs = SinglePerformanceLogger.Instance().StopStopWatch(sw);
+            return returnValue;
+        }
+
     }
 }
