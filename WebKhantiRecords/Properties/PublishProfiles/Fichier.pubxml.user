@@ -22,7 +22,7 @@ en modifiant ce fichier MSBuild. Pour en savoir plus à ce sujet, consultez la p
       <publishTime>06/22/2019 09:55:53</publishTime>
     </File>
     <File Include="app/app.js">
-      <publishTime>06/29/2019 15:07:00</publishTime>
+      <publishTime>12/22/2019 08:46:57</publishTime>
     </File>
     <File Include="app/app.Maintenance/Maintenance.html">
       <publishTime>06/22/2019 09:55:53</publishTime>
@@ -48,6 +48,12 @@ en modifiant ce fichier MSBuild. Pour en savoir plus à ce sujet, consultez la p
     <File Include="app/app.TestKhanti/Analyse2.js">
       <publishTime>06/26/2019 00:11:38</publishTime>
     </File>
+    <File Include="app/app.TestKhanti/EditAdmin.html">
+      <publishTime>12/23/2019 18:46:11</publishTime>
+    </File>
+    <File Include="app/app.TestKhanti/EditAdmin.js">
+      <publishTime>12/23/2019 21:23:41</publishTime>
+    </File>
     <File Include="app/app.TestKhanti/loginPage.html">
       <publishTime>06/29/2019 15:55:01</publishTime>
     </File>
@@ -70,7 +76,7 @@ en modifiant ce fichier MSBuild. Pour en savoir plus à ce sujet, consultez la p
       <publishTime>06/29/2019 15:23:25</publishTime>
     </File>
     <File Include="app/app.welcome/welcome.html">
-      <publishTime>06/28/2019 21:53:43</publishTime>
+      <publishTime>12/22/2019 09:12:27</publishTime>
     </File>
     <File Include="app/app.welcome/welcome.js">
       <publishTime>06/28/2019 23:38:28</publishTime>
@@ -85,7 +91,7 @@ en modifiant ce fichier MSBuild. Pour en savoir plus à ce sujet, consultez la p
       <publishTime>06/22/2019 09:55:53</publishTime>
     </File>
     <File Include="app/nav.html">
-      <publishTime>06/30/2019 00:40:25</publishTime>
+      <publishTime>12/22/2019 08:46:57</publishTime>
     </File>
     <File Include="bin/EPPlus.dll">
       <publishTime>06/22/2019 12:24:32</publishTime>
@@ -103,7 +109,7 @@ en modifiant ce fichier MSBuild. Pour en savoir plus à ce sujet, consultez la p
       <publishTime>06/22/2019 09:50:21</publishTime>
     </File>
     <File Include="bin/KhantiRecordsMetier.dll">
-      <publishTime>06/30/2019 00:38:41</publishTime>
+      <publishTime>12/23/2019 21:25:49</publishTime>
     </File>
     <File Include="bin/Newtonsoft.Json.dll">
       <publishTime>06/22/2019 09:50:16</publishTime>
@@ -121,16 +127,64 @@ en modifiant ce fichier MSBuild. Pour en savoir plus à ce sujet, consultez la p
       <publishTime>06/22/2019 09:50:21</publishTime>
     </File>
     <File Include="bin/WebKhantiRecords.dll">
-      <publishTime>06/30/2019 00:41:30</publishTime>
+      <publishTime>12/23/2019 21:25:49</publishTime>
     </File>
     <File Include="bin/_GLOBAL.dll">
-      <publishTime>06/30/2019 00:38:40</publishTime>
+      <publishTime>12/23/2019 18:46:12</publishTime>
     </File>
     <File Include="css/angular-material.min.css">
       <publishTime>06/22/2019 09:56:18</publishTime>
     </File>
     <File Include="css/bootstrap.min.css">
       <publishTime>06/22/2019 09:56:18</publishTime>
+    </File>
+    <File Include="css/dx/dx.common.css">
+      <publishTime>12/22/2019 08:46:57</publishTime>
+    </File>
+    <File Include="css/dx/dx.light.css">
+      <publishTime>12/22/2019 08:46:57</publishTime>
+    </File>
+    <File Include="css/dx/icons/dxicons.ttf">
+      <publishTime>12/22/2019 08:46:57</publishTime>
+    </File>
+    <File Include="css/dx/icons/dxicons.woff">
+      <publishTime>12/22/2019 08:46:57</publishTime>
+    </File>
+    <File Include="css/dx/icons/dxicons.woff2">
+      <publishTime>12/22/2019 08:46:57</publishTime>
+    </File>
+    <File Include="css/dx/icons/dxiconsios.ttf">
+      <publishTime>12/22/2019 08:46:57</publishTime>
+    </File>
+    <File Include="css/dx/icons/dxiconsios.woff">
+      <publishTime>12/22/2019 08:46:57</publishTime>
+    </File>
+    <File Include="css/dx/icons/dxiconsios.woff2">
+      <publishTime>12/22/2019 08:46:57</publishTime>
+    </File>
+    <File Include="css/dx/icons/dxiconsmaterial.ttf">
+      <publishTime>12/22/2019 08:46:57</publishTime>
+    </File>
+    <File Include="css/dx/icons/dxiconsmaterial.woff">
+      <publishTime>12/22/2019 08:46:57</publishTime>
+    </File>
+    <File Include="css/dx/icons/dxiconsmaterial.woff2">
+      <publishTime>12/22/2019 08:46:57</publishTime>
+    </File>
+    <File Include="css/fonts/glyphicons-halflings-regular.eot">
+      <publishTime>12/22/2019 08:46:57</publishTime>
+    </File>
+    <File Include="css/fonts/glyphicons-halflings-regular.svg">
+      <publishTime>12/22/2019 08:46:57</publishTime>
+    </File>
+    <File Include="css/fonts/glyphicons-halflings-regular.ttf">
+      <publishTime>12/22/2019 08:46:57</publishTime>
+    </File>
+    <File Include="css/fonts/glyphicons-halflings-regular.woff">
+      <publishTime>12/22/2019 08:46:57</publishTime>
+    </File>
+    <File Include="css/fonts/glyphicons-halflings-regular.woff2">
+      <publishTime>12/22/2019 08:46:57</publishTime>
     </File>
     <File Include="css/material-icons.css">
       <publishTime>06/22/2019 09:56:18</publishTime>
@@ -189,6 +243,93 @@ en modifiant ce fichier MSBuild. Pour en savoir plus à ce sujet, consultez la p
     <File Include="Global.asax">
       <publishTime>06/22/2019 09:50:15</publishTime>
     </File>
+    <File Include="img/Artistes/aluna-project-150x150.jpg">
+      <publishTime>12/22/2019 08:46:57</publishTime>
+    </File>
+    <File Include="img/Artistes/black-roots-150x150.jpg">
+      <publishTime>12/22/2019 08:46:57</publishTime>
+    </File>
+    <File Include="img/Artistes/black-ship-150x150.jpg">
+      <publishTime>12/22/2019 08:46:57</publishTime>
+    </File>
+    <File Include="img/Artistes/bob-charley-150x150.jpg">
+      <publishTime>12/22/2019 08:46:57</publishTime>
+    </File>
+    <File Include="img/Artistes/bobo-yovo-150x150.jpg">
+      <publishTime>12/22/2019 08:46:57</publishTime>
+    </File>
+    <File Include="img/Artistes/bronco-knowledge-150x150.jpg">
+      <publishTime>12/22/2019 08:46:57</publishTime>
+    </File>
+    <File Include="img/Artistes/devi-reed-150x150.jpg">
+      <publishTime>12/22/2019 08:46:57</publishTime>
+    </File>
+    <File Include="img/Artistes/golpe-seko-150x150.jpg">
+      <publishTime>12/22/2019 08:46:57</publishTime>
+    </File>
+    <File Include="img/Artistes/jah-legacy-150x150.jpg">
+      <publishTime>12/22/2019 08:46:57</publishTime>
+    </File>
+    <File Include="img/Artistes/julia-biel-150x150.jpg">
+      <publishTime>12/22/2019 08:46:57</publishTime>
+    </File>
+    <File Include="img/Artistes/karigan-150x150.jpg">
+      <publishTime>12/22/2019 08:46:57</publishTime>
+    </File>
+    <File Include="img/Artistes/le-bois-bleu-150x150.jpg">
+      <publishTime>12/22/2019 08:46:57</publishTime>
+    </File>
+    <File Include="img/Artistes/letoyo-150x150.jpg">
+      <publishTime>12/22/2019 08:46:57</publishTime>
+    </File>
+    <File Include="img/Artistes/lyricson-150x150.jpg">
+      <publishTime>12/22/2019 08:46:57</publishTime>
+    </File>
+    <File Include="img/Artistes/marius-solal-150x150.jpg">
+      <publishTime>12/22/2019 08:46:57</publishTime>
+    </File>
+    <File Include="img/Artistes/mawyd-150x150.jpg">
+      <publishTime>12/22/2019 08:46:57</publishTime>
+    </File>
+    <File Include="img/Artistes/mister-nils-150x150.jpg">
+      <publishTime>12/22/2019 08:46:57</publishTime>
+    </File>
+    <File Include="img/Artistes/mystical-faya-150x150.jpg">
+      <publishTime>12/22/2019 08:46:57</publishTime>
+    </File>
+    <File Include="img/Artistes/nai-jah-150x150.jpg">
+      <publishTime>12/22/2019 08:46:57</publishTime>
+    </File>
+    <File Include="img/Artistes/natural-mighty-150x150.jpg">
+      <publishTime>12/22/2019 08:46:57</publishTime>
+    </File>
+    <File Include="img/Artistes/odaflaw-150x150.jpg">
+      <publishTime>12/22/2019 08:46:57</publishTime>
+    </File>
+    <File Include="img/Artistes/omar-perry-150x150.jpg">
+      <publishTime>12/22/2019 08:46:57</publishTime>
+    </File>
+    <File Include="img/Artistes/solar-project-150x150.jpg">
+      <publishTime>12/22/2019 08:46:57</publishTime>
+    </File>
+    <File Include="img/Artistes/soom-t-150x150.jpg">
+      <publishTime>12/22/2019 08:46:57</publishTime>
+    </File>
+    <File Include="img/Artistes/the-banyans-150x150.jpg">
+      <publishTime>12/22/2019 08:46:57</publishTime>
+    </File>
+    <File Include="img/Artistes/the-soul-papaz-150x150.jpg">
+      <publishTime>12/22/2019 08:46:57</publishTime>
+    </File>
+    <File Include="img/Artistes/the-soul-sonics-150x150.jpg">
+      <publishTime>12/22/2019 08:46:57</publishTime>
+    </File>
+    <File Include="img/Artistes/the-tuff-lions-150x150.jpg">
+      <publishTime>12/22/2019 08:46:57</publishTime>
+    </File>
+    <File Include="img/Artistes/thomas-broussard-150x150.jpeg">
+      <publishTime>12/22/2019 08:46:57</publishTime>
+    </File>
     <File Include="img/image-not-found.jpg">
       <publishTime>06/22/2019 16:07:42</publishTime>
     </File>
@@ -199,7 +340,7 @@ en modifiant ce fichier MSBuild. Pour en savoir plus à ce sujet, consultez la p
       <publishTime>06/22/2019 10:28:06</publishTime>
     </File>
     <File Include="index.html">
-      <publishTime>06/29/2019 15:07:00</publishTime>
+      <publishTime>12/22/2019 08:46:57</publishTime>
     </File>
     <File Include="packages.config">
       <publishTime>06/22/2019 09:52:44</publishTime>
@@ -236,6 +377,15 @@ en modifiant ce fichier MSBuild. Pour en savoir plus à ce sujet, consultez la p
     </File>
     <File Include="Scripts/d3.js">
       <publishTime>06/22/2019 09:56:52</publishTime>
+    </File>
+    <File Include="Scripts/dx/angular.min.js">
+      <publishTime>12/22/2019 08:46:57</publishTime>
+    </File>
+    <File Include="Scripts/dx/dx.all.js">
+      <publishTime>12/22/2019 08:46:57</publishTime>
+    </File>
+    <File Include="Scripts/dx/jquery.min.js">
+      <publishTime>12/22/2019 08:46:57</publishTime>
     </File>
     <File Include="Scripts/go.js">
       <publishTime>06/22/2019 09:56:52</publishTime>

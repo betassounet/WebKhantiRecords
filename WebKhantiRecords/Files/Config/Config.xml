@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ConfigParams xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <listDataArtiste>
+    <DataArtiste Name="toto">
+      <listAliasName>
+        <string>toto_</string>
+        <string>toto</string>
+      </listAliasName>
+    </DataArtiste>
+  </listDataArtiste>
+  <listDataGroupeArtiste>
+    <DataGroupeArtiste Name="goupeX">
+      <listItemDistributionArtiste>
+        <ItemDistributionArtiste Name="g1" Pourcent="25" />
+        <ItemDistributionArtiste Name="g2" Pourcent="75" />
+      </listItemDistributionArtiste>
+    </DataGroupeArtiste>
+  </listDataGroupeArtiste>
+</ConfigParams>

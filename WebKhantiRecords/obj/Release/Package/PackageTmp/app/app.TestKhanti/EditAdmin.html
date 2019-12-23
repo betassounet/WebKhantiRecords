@@ -1,0 +1,453 @@
+﻿<style>
+    table {
+        width: 100%;
+    }
+
+    table, th, td {
+        /*border: 1px solid black;*/
+        border: none
+        border-collapse: collapse;
+    }
+
+    th, td {
+        padding: 5px;
+        text-align: left;
+    }
+
+    table#t01 tr:nth-child(even) {
+        background-color: #eee;
+    }
+
+    table#t01 tr:nth-child(odd) {
+        background-color: #fff;
+    }
+
+    table#t01 th {
+        background-color: gray;
+        color: white;
+    }
+
+    .tdEntete {
+        writing-mode: vertical-lr;
+        text-orientation: sideways;
+    }
+
+    #tableHolder
+ {
+ /*width: 300px;*/
+ height: 1000px;
+ overflow: scroll
+}
+
+
+</style>
+ 
+<!--<button type="button" class="btn btn-danger" data-ng-click="GetDispoDataFromGlobal()">GetDispoDataFromGlobal</button>-->
+
+
+<md-tabs md-dynamic-height md-border-bottom>
+
+    <md-tab>
+        <md-tab-label>
+            Excel Resolution Path Phase 2
+        </md-tab-label>
+        <md-tab-body>
+            <div ng-init="VoirFirstArtiste = true">
+                <button type="button" class="btn btn-danger" data-ng-click="GetArtisteAndResolutionPath()">Get Analyse Resolution phase 2</button>
+                Voir FIRST ARTISTE : <input type="checkbox" ng-model="VoirFirstArtiste" />
+            </div>
+            <hr />
+            <div layout="row">
+                <div flex="100">
+                    <uib-accordion>
+                        <div uib-accordion-group class="panel-default" ng-repeat="artiste in RepGetArtisteAndResolutionPath.listArtisteAndRawData" ng-show="VoirFirstArtiste? artiste.artisteDataAdmin.IsFirstArtist : !artiste.artisteDataAdmin.IsFirstArtist">
+                            <uib-accordion-heading>
+                                {{artiste.NameArtiste}}
+                            </uib-accordion-heading>
+
+                            <div layout="row">
+                                <div flex="45">
+                                    <table id="t01">
+                                        <tr>
+                                            <th width="2%">Id</th>
+                                            <th width="15%">Excel Artiste RawName & Alias PB</th>
+                                            <th width="20%">Artiste / Feat ?</th>
+                                            <th width="50%">Products</th>
+                                        </tr>
+                                        <tr ng-repeat="a in artiste.listItemNameResolution" ng-init="a.plus=false;">
+                                            <td>{{a.Id}}</td>
+                                            <td>
+                                                <div>
+                                                    <span uib-tooltip=" FirstArtisteName : {{a.FirstArtisteName}}">{{a.ExcelName}}</span>
+                                                    <span ng-show="a.sPbAscci" style="color:red;">/ {{a.sPbAscci}}</span>
+                                                </div>
+                                                <div ng-show="a.CptAlias > 0">
+                                                    <div ng-repeat="alias in a.listItemAlias">
+                                                        <span style="color:blueviolet;">[{{alias.Id}}]{{alias.ExcelName}}</span>
+                                                        <span ng-show="alias.sPbAscci" style="color:red;">/ {{alias.sPbAscci}}</span>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div ng-repeat="feat in a.listItemArtiste">
+                                                    <span uib-tooltip=" {{feat.ArtistelName}} : {{feat.CptPosFirstArtiste}} fois en artiste principal /  {{feat.CptPosFeaturing}} fois en Featuring sur {{feat.CptPresenceInRawName}} citations" ng-style="{'color': (feat.CptPosFirstArtiste > 0) ? 'green':'black'}">[{{feat.Id}}] {{feat.ArtistelName}} [{{feat.CptPosFirstArtiste}},{{feat.CptPosFeaturing}} / {{feat.CptPresenceInRawName}} ]</span>
+                                                    <span ng-show="feat.sPbAscci" style="color:red;">/ {{feat.sPbAscci}}</span>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <table>
+                                                    <tr ng-show="$index == 0">
+                                                        <th width="45%">Product</th>
+                                                        <th width="25%">ISRC</th>
+                                                        <th width="25%">Barcode</th>
+                                                        <th width="5%">Q</th>
+                                                    </tr>
+                                                    <tr ng-repeat="p in a.listProduct">
+                                                        <td width="45%"><span uib-tooltip="DMS :  {{p.DMS}}"><b>{{p.Product}}</b></span></td>
+                                                        <td width="25%"><span style="font-size:10px">{{p.ISRC}}</span></td>
+                                                        <td width="25%"><span uib-tooltip="Price Cat: {{p.PriceCategory}}" style="font-size:10px">{{p.Barcode}}</span></td>
+                                                        <td width="5%"><span uib-tooltip="FORMAT TYPE : {{p.FormatType}}" style="font-size:10px">{{p.CptDownload}}</span></td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <div flex="5">
+
+                                </div>
+
+                                <div flex="50">
+
+                                    <md-tabs md-dynamic-height md-border-bottom>
+
+                                        <md-tab>
+                                            <md-tab-label>
+                                                FICHE ARTISTE
+                                            </md-tab-label>
+                                            <md-tab-body>
+
+                                                <div layout="row">
+                                                    <div flex="3" style="background:DarkGrey">
+                                                        <span style="writing-mode: vertical-rl; text-orientation: mixed; color:white"><b>__REFERENCES ARTISTE  </b></span>
+                                                    </div>
+                                                    <div flex="97">
+                                                        <table>
+                                                            <tr>
+                                                                <td>Nom ARTISTE selon Analyse : </td>
+                                                                <td><h4>{{artiste.artisteDataAdmin.AnalyseArtisteName}}</h4></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Nom ARTISTE ADMIN:</td>
+                                                                <td><input type="text" ng-model="artiste.artisteDataAdmin.Name" /></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Ref ARTISTE ADMIN:</td>
+                                                                <td><input type="text" ng-model="artiste.artisteDataAdmin.sRefArtiste" /></td>
+                                                            </tr>
+
+                                                        </table>
+                                                    </div>
+                                                </div>
+
+                                                <hr />
+
+                                                <div layout="row">
+                                                    <div flex="3" style="background:DarkGrey">
+                                                        <span style="writing-mode: vertical-rl; text-orientation: mixed; color:white"><b>__PAYABLES ITEMS  </b></span>
+                                                    </div>
+                                                    <div flex="97">
+                                                        <uib-accordion>
+                                                            <div uib-accordion-group class="panel-default" ng-repeat="payable in artiste.artisteDataAdmin.listPayableDataAdmin">
+                                                                <uib-accordion-heading>
+                                                                    <table>
+                                                                        <tr>
+                                                                            <td>Payable : </td>
+                                                                            <td> {{payable.Name}} </td>
+                                                                            <td>{{payable.sRefProduct}}</td>
+                                                                            <td>Validité : </td>
+                                                                            <td>{{payable.MaxDateTimeValidite | date}}</td>
+                                                                        </tr>
+                                                                    </table>
+                                                                </uib-accordion-heading>
+
+                                                                <table>
+                                                                    <tr>
+                                                                        <td>Nom Fiche Produit (Album ?) :</td>
+                                                                        <td><input type="text" ng-model="payable.Name" /></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>Ref Fiche Produit (Khxxx):</td>
+                                                                        <td><input type="text" ng-model="payable.sRefProduct" /></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>Pourcentage par defaut :</td>
+                                                                        <td><input type="number" style="width:50px" ng-model="payable.pourcent" /></td>
+                                                                    </tr>
+                                                                </table>
+                                                                <hr />
+                                                                <table id="t01">
+                                                                    <tr>
+                                                                        <th width="40%">Name</th>
+                                                                        <th width="20%">Format Type</th>
+                                                                        <th width="5%">Type ?</th>
+                                                                        <th width="5%">Ref ? </th>
+                                                                        <th width="20%">Universal Id</th>
+                                                                        <th width="10%">%</th>
+                                                                    </tr>
+                                                                    <tr ng-repeat="product in payable.listProductDataAdmin">
+                                                                        <td>
+                                                                            <span ng-style="{'color': (product.TypeDownload > 0) ? 'blue':'black'}">{{product.Name}}</span>
+                                                                        </td>
+                                                                        <td>{{product.FormatType}}</td>
+                                                                        <td><input type="text" style="width:50px" ng-model="product.Type" /></td>
+                                                                        <td><input type="text" style="width:50px" ng-model="product.Ref" /></td>
+                                                                        <td><b>{{product.BarcodeOrISRC}}</b></td>
+                                                                        <td><input type="number" style="width:50px" ng-model="product.pourcent" /></td>
+                                                                    </tr>
+                                                                </table>
+                                                            </div>
+                                                        </uib-accordion>
+                                                    </div>
+                                                </div>
+
+                                            </md-tab-body>
+                                        </md-tab>
+                                        <md-tab>
+                                            <md-tab-label>
+                                                RAW
+                                            </md-tab-label>
+                                            <md-tab-body>
+                                                <pre>
+{{artiste.artisteDataAdmin | json}}
+</pre>
+                                            </md-tab-body>
+                                        </md-tab>
+                                    </md-tabs>
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </uib-accordion>
+
+                </div>
+            </div>
+            
+                    <!--<pre>
+{{ RepGetArtisteAndResolutionPath | json }}
+</pre>-->
+
+        </md-tab-body>
+
+    </md-tab>
+
+    <md-tab>
+        <md-tab-label>
+            Excel Resolution Path Phase 1
+        </md-tab-label>
+        <md-tab-body>
+            <button type="button" class="btn btn-danger" data-ng-click="GetNameResolutionPath()">Get Analyse Resolution phase 1</button>
+            <hr/>
+            <div layout="row">
+                <div flex="60">
+                    <table id="t01">
+                        <tr>
+                            <th width="2%">Id</th>
+                            <th width="15%">Excel Artiste RawName & Alias PB</th>
+                            <th width="20%">Artiste / Feat ?</th>
+                            <th width="2%"></th>
+                            <th width="50%">Products</th>
+                        </tr>
+                        <tr ng-repeat="a in RepGetNameResolutionPath.listItemNameResolution" ng-init="a.plus=false;">
+                            <td>{{a.Id}}</td>
+                            <td>
+                                <div>
+                                    <span uib-tooltip=" FirstArtisteName : {{a.FirstArtisteName}}">{{a.ExcelName}}</span>
+                                    <span ng-show="a.sPbAscci" style="color:red;">/ {{a.sPbAscci}}</span>
+                                </div>
+                                <div ng-show="a.CptAlias > 0">
+                                    <div ng-repeat="alias in a.listItemAlias">
+                                        <span style="color:blueviolet;">[{{alias.Id}}]{{alias.ExcelName}}</span>
+                                        <span ng-show="alias.sPbAscci" style="color:red;">/ {{alias.sPbAscci}}</span>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div ng-repeat="feat in a.listItemArtiste">
+                                    <span uib-tooltip=" {{feat.ArtistelName}} : {{feat.CptPosFirstArtiste}} fois en artiste principal /  {{feat.CptPosFeaturing}} fois en Featuring sur {{feat.CptPresenceInRawName}} citations" ng-style="{'color': (feat.CptPosFirstArtiste > 0) ? 'green':'black'}">[{{feat.Id}}] {{feat.ArtistelName}} [{{feat.CptPosFirstArtiste}},{{feat.CptPosFeaturing}} / {{feat.CptPresenceInRawName}} ]</span>
+                                    <span ng-show="feat.sPbAscci" style="color:red;">/ {{feat.sPbAscci}}</span>
+                                </div>
+                            </td>
+                            <td>
+                                <button type="button" class="btn btn-danger" data-ng-click="a.plus =! a.plus">+</button>
+                            </td>
+                            <td>
+                                <div ng-show="a.plus">
+                                    <table>
+                                        <tr>
+                                            <th width="60%">Product</th>
+                                            <th width="18%">ISRC</th>
+                                            <th width="18%">Barcode</th>
+                                            <th width="4%">Q</th>
+                                        </tr>
+                                        <tr ng-repeat="p in a.listProduct">
+                                            <td><span uib-tooltip="DMS :  {{p.DMS}}"><b>{{p.Product}}</b></span></td>
+                                            <td><span style="font-size:10px">{{p.ISRC}}</span></td>
+                                            <td><span uib-tooltip="Price Cat: {{p.PriceCategory}}" style="font-size:10px">{{p.Barcode}}</span></td>
+                                            <td><span uib-tooltip="FORMAT TYPE : {{p.FormatType}}" style="font-size:10px">{{p.CptDownload}}</span></td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <!--<pre>
+            {{RepGetNameResolutionPath | json}}
+            </pre>-->
+
+        </md-tab-body>
+    </md-tab>
+
+            <md-tab>
+                <md-tab-label>
+                    Proto 1
+                </md-tab-label>
+                <md-tab-body>
+
+                    <div layout="row">
+                        <div flex="25">
+                            <h2>Raw</h2>
+                            <uib-accordion>
+                                <div uib-accordion-group class="panel-default" ng-repeat="item in RepGetEntityArtists.listEntityArtist" ng-show="item.Source == 1">
+                                    <uib-accordion-heading>
+                                        {{item.Id}} [{{item.Source}}]   {{item.Name}}
+                                    </uib-accordion-heading>
+                                    <pre>
+{{item | json}}
+</pre>
+
+                                </div>
+                            </uib-accordion>
+
+                        </div>
+                        <div flex="25">
+                            <h2>Decode Feat</h2>
+                            <uib-accordion>
+                                <div uib-accordion-group class="panel-default" ng-repeat="item in RepGetEntityArtists.listEntityArtist" ng-show="item.Source == 2">
+                                    <uib-accordion-heading>
+                                        {{item.Id}}  [{{item.Source}}]  {{item.Name}}
+                                    </uib-accordion-heading>
+                                    <pre>
+{{item | json}}
+</pre>
+
+                                </div>
+                            </uib-accordion>
+                        </div>
+                        <div flex="10">
+                        </div>
+
+                        <div flex="40">
+                            <h2>Artiste Admin File</h2>
+                            <uib-accordion>
+                                <div uib-accordion-group class="panel-default" ng-repeat="item in RepGetEntityArtists.artistsAdminFile.listArtistAdminItems">
+                                    <uib-accordion-heading>
+                                        {{item.IdArtist}} {{item.ArtistName}}
+                                    </uib-accordion-heading>
+                                    <pre>
+{{item | json}}
+</pre>
+                                </div>
+                            </uib-accordion>
+                        </div>
+                    </div>
+
+
+                </md-tab-body>
+            </md-tab>
+            <md-tab>
+                <md-tab-label>
+                    Proto 0
+                </md-tab-label>
+                <md-tab-body>
+
+                    <div layout="row">
+                        <div flex="20">
+                            <md-select ng-model="selectedArtist">
+                                <!--<md-option><em> None</em></md-option>-->
+                                <md-option ng-repeat="item in RepGetDispoDataFromGlobal.listDispoArtist" ng-value="item">
+                                    {{item.Artist}}
+                                </md-option>
+                            </md-select>
+
+
+                        </div>
+                        <div flex="5">
+
+                        </div>
+                        <div flex="30">
+                            <table id="t01">
+                                <tr>
+                                    <th width="">Product</th>
+                                    <th>ISRC/BC</th>
+                                    <th>%</th>
+                                    <th>Select</th>
+                                </tr>
+                                <tr ng-repeat="p in selectedArtist.listDispoProduct">
+                                    <td>{{p.Product}}</td>
+                                    <td><div>{{p.ISRC}}</div><div><b>{{p.Barcode}}</b></div></td>
+                                    <td><input type="number" style="width:50px" min="0" max="100" /></td>
+                                    <td><button type="button" class="btn btn-warning" data-ng-click="SelectArtistAndProduct(selectedArtist.Artist, p)">Select</button></td>
+                                </tr>
+                            </table>
+
+                            <!--<pre>
+                                    {{selectedArtist | json}}
+                            </pre>-->
+                        </div>
+                        <div flex="5">
+
+                        </div>
+                        <div flex="30">
+                            <table id="t01">
+                                <tr>
+                                    <th>Artist</th>
+                                    <th>Product</th>
+                                    <th>ISRC/BC</th>
+                                    <th>Select</th>
+                                </tr>
+                                <tr ng-repeat="p in SelectedArtistProduct">
+                                    <td>{{p.artistName}}</td>
+                                    <td>{{p.product.Product}}</td>
+                                    <td><div>{{p.product.ISRC}}</div><div>{{p.product.Barcode}}</div></td>
+                                    <td><button type="button" class="btn btn-danger" data-ng-click="UnSelectArtistAndProduct(p)">X</button></td>
+                                </tr>
+                            </table>
+
+
+
+                            <!--<pre>
+                            {{SelectedArtistProduct | json }}
+                            </pre>-->
+
+                        </div>
+                    </div>
+
+                </md-tab-body>
+            </md-tab>
+
+</md-tabs>
+
+
+
+
+
+
+<!--<pre>
+
+{{ RepGetDispoDataFromGlobal | json}}
+</pre>-->

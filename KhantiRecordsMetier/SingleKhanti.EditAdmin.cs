@@ -440,7 +440,7 @@ namespace KhantiRecordsMetier {
 
 
     public class ParamArtisteAndResolutionPath {
-
+        public string sAction;
     }
 
     public class ArtisteAndResolutionPath {
@@ -455,7 +455,7 @@ namespace KhantiRecordsMetier {
     }
 
     public class ParamNameResolutionPath {
-
+        public string sAction;
     }
 
     public class NameResolutionPath {
