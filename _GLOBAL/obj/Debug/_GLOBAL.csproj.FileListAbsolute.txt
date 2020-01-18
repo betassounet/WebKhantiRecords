@@ -47,3 +47,5 @@ C:\GIT2019\WebKhantiRecords\_GLOBAL\bin\Debug\_GLOBAL.pdb
 C:\GIT2019\WebKhantiRecords\_GLOBAL\bin\Debug\ExcelPackage.dll
 C:\GIT2019\WebKhantiRecords\_GLOBAL\obj\Debug\_GLOBAL.dll
 C:\GIT2019\WebKhantiRecords\_GLOBAL\obj\Debug\_GLOBAL.pdb
+C:\GIT2019\WebKhantiRecords\_GLOBAL\obj\Debug\_GLOBAL.csproj.CoreCompileInputs.cache
+C:\GIT2019\WebKhantiRecords\_GLOBAL\obj\Debug\_GLOBAL.csproj.CopyComplete

@@ -195,6 +195,9 @@
     </Compile>
     <Compile Include="NoIp\NoIpService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UpLoadHandler.ashx.cs">
+      <DependentUpon>UpLoadHandler.ashx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -207,6 +210,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="Scripts\jquery-3.2.1.min.map" />
+    <Content Include="UpLoadHandler.ashx" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -216,6 +220,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Files\UpLoad\RawXmlFiles\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>

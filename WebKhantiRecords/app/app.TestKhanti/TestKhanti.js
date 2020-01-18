@@ -5,7 +5,7 @@
         .module('app')
         .controller('testKhantiCtrl', testKhantiCtrl);
 
-    function testKhantiCtrl($scope, $http, $mdToast, $mdDialog, $sce) {
+    function testKhantiCtrl($scope, $http, $location, $mdToast, $mdDialog, $sce) {
 
         $scope.ImageLogo = "./img/LOGO_khanti_couleurs-e1558105770391.png";
 
@@ -98,6 +98,29 @@
             });
         }
 
+
+        $scope.UploadFile = function (files) {
+            var fd = new FormData();
+            fd.append("file", files[0]);
+            fd.append("forceUpLoad", $scope.isForceUpLoad);     // on peut essayer de passer des infos supplémentaires..
+            fd.append("SelectedMonth", $scope.selectedMonth);
+
+            var urlBase = $location.$$absUrl;
+            urlBase = urlBase.replace('#/testKhanti','');
+            console.log('urlBase : ', urlBase);
+            var uploadUrl = urlBase + 'UpLoadHandler.ashx';// Url du Handler generique ashx niveau du serveur
+            //var uploadUrl = "http://localhost:50360//UpLoadHandler.ashx"; 
+
+            $http.post(uploadUrl, fd, {
+                withCredentials: true,
+                headers: { 'Content-Type': undefined },
+                transformRequest: angular.identity
+            }).then(function (response) {
+                $scope.reponseUpLoad = response;
+            },function (responseError) {
+                $scope.reponseUpLoad = responseError;
+            });
+        }
     }
 
 })();

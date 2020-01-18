@@ -30,7 +30,42 @@
         writing-mode: vertical-lr;
         text-orientation: sideways;
     }
+
+    #form {
+    max-width: 600px;
+    margin: auto;
+}
+
+#button {
+    margin-top: 50px;
+    margin-right: 20px;
+    float: right;    
+}
+
+#fileuploader-container{
+    border: 1px solid #d3d3d3;
+    margin: 20px 20px 0 20px;
+}
+
+#form h3 {
+    margin-left: 20px;
+    font-weight: normal;
+    font-size: 22px;
+}
+
 </style>
+
+
+<div>
+    <span>Force UpLoad : <input type="checkbox" ng-model="isForceUpLoad"/></span>
+    <span><input type="month" ng-model="selectedMonth" min="2018-01"/></span>
+    <span><input type="file" accept=".xlsx" onchange="angular.element(this).scope().UploadFile(this.files)"/></span>
+    
+    <!--<input type="file" onchange="UploadFile(this.files)"/>-->
+    {{reponseUpLoad}}
+</div>
+
+
 
 <div>
     <div layout="row">

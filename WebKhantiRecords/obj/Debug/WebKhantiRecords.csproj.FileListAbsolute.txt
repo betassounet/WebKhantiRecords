@@ -45,6 +45,8 @@ C:\GIT2019\WebKhantiRecords\WebKhantiRecords\bin\EPPlus.xml
 C:\GIT2019\WebKhantiRecords\WebKhantiRecords\bin\fr\System.Net.Http.Formatting.resources.dll
 C:\GIT2019\WebKhantiRecords\WebKhantiRecords\bin\fr\System.Web.Http.resources.dll
 C:\GIT2019\WebKhantiRecords\WebKhantiRecords\bin\fr\System.Web.Http.WebHost.resources.dll
-C:\GIT2019\WebKhantiRecords\WebKhantiRecords\obj\Debug\WebKhantiRecords.csprojResolveAssemblyReference.cache
 C:\GIT2019\WebKhantiRecords\WebKhantiRecords\obj\Debug\WebKhantiRecords.dll
 C:\GIT2019\WebKhantiRecords\WebKhantiRecords\obj\Debug\WebKhantiRecords.pdb
+C:\GIT2019\WebKhantiRecords\WebKhantiRecords\obj\Debug\WebKhantiRecords.csprojAssemblyReference.cache
+C:\GIT2019\WebKhantiRecords\WebKhantiRecords\obj\Debug\WebKhantiRecords.csproj.CoreCompileInputs.cache
+C:\GIT2019\WebKhantiRecords\WebKhantiRecords\obj\Debug\WebKhantiRecords.csproj.CopyComplete
