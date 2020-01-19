@@ -85,6 +85,8 @@
     <Content Include="app\app.NoSqlEval\nosqlEval.js" />
     <Content Include="app\app.TestKhanti\adminChoixArtiste.html" />
     <Content Include="app\app.TestKhanti\adminChoixArtiste.js" />
+    <Content Include="app\app.TestKhanti\AdminPage.html" />
+    <Content Include="app\app.TestKhanti\AdminPage.js" />
     <Content Include="app\app.TestKhanti\Analyse2.html" />
     <Content Include="app\app.TestKhanti\Analyse2.js" />
     <Content Include="app\app.TestKhanti\EditAdmin.html" />

@@ -104,6 +104,11 @@
             controller: 'EditAdminCtrl',
         });
 
+        $routeProvider.when('/AdminPage', {
+            templateUrl: 'app/app.TestKhanti/AdminPage.html',
+            controller: 'AdminPageCtrl',
+        });
+
 
         $routeProvider.otherwise({
             redirectTo: '/'

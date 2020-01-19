@@ -1,0 +1,137 @@
+﻿
+<style>
+    table {
+        width: 100%;
+    }
+
+    table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+    }
+
+    th, td {
+        padding: 5px;
+        text-align: left;
+    }
+
+    table#t01 tr:nth-child(even) {
+        background-color: #eee;
+    }
+
+    table#t01 tr:nth-child(odd) {
+        background-color: #fff;
+    }
+
+    table#t01 th {
+        background-color: gray;
+        color: white;
+    }
+
+    .tdEntete {
+        writing-mode: vertical-lr;
+        text-orientation: sideways;
+    }
+</style>
+
+
+
+<div layout="row">
+    <div flex="15">
+
+    </div>
+    <div flex>
+    </div>
+</div>
+
+
+<md-tabs md-dynamic-height md-border-bottom>
+
+    <md-tab>
+        <md-tab-label>
+            Upload And Analyse
+        </md-tab-label>
+        <md-tab-body>
+
+            <div">
+                <span><input type="file" accept=".xlsx" onchange="angular.element(this).scope().PreUploadFile(this.files)" /></span>
+            </div>
+
+
+            <table id="t01">
+                <tr>
+                    <th>Name</th>
+                    <th>LastModified</th>
+                    <th>Size</th>
+                    <th>Force</th>
+                    <th>Periode</th>
+                    <th>UPLOAD</th>
+                    <th>reponse</th>
+                </tr>
+
+
+                <tr ng-repeat="f in ListFileToUpload">
+                    <td>{{f.name}}</td>
+                    <td>{{f.lastmodified}}</td>
+                    <td>{{f.size}}</td>
+                    <td><input type="checkbox" ng-model="f.isForceUpLoad" /></td>
+                    <td><input type="month" ng-model="f.selectedMonth" min="2018-01" /></td>
+                    <td><button type="button" class="btn btn-danger" data-ng-click="UploadFile(f)">UpLoad to Server</button></td>
+                    <td>{{f.reponseUpLoad}}</td>
+                </tr>
+
+            </table>
+
+
+
+            <!--<div>
+                <span>Force UpLoad : <input type="checkbox" ng-model="isForceUpLoad" /></span>
+                <span><input type="month" ng-model="selectedMonth" min="2018-01" /></span>
+            </div>-->
+
+            <div layout="row">
+                <div flex="20">
+                    
+                </div>
+                <div flex ="20">
+                    
+                </div>
+            </div>
+        </md-tab-body>
+    </md-tab>
+
+    <md-tab>
+        <md-tab-label>
+            Upload And Analyse
+        </md-tab-label>
+        <md-tab-body>
+
+        </md-tab-body>
+    </md-tab>
+
+    <md-tab>
+        <md-tab-label>
+            Params
+        </md-tab-label>
+        <md-tab-body>
+            <div layout="row">
+                <div flex="30">
+                    <md-input-container>
+                    <label>urlBase : </label>
+                    <input ng-model="urlBase" style="width:300px" disabled>
+                </md-input-container>
+                </div>
+                <div flex =" 30">
+                    <md-input-container>
+                    <label>uploadUrl : </label>
+                    <input ng-model="uploadUrl" style="width:300px">
+                </md-input-container>
+                </div>
+            </div>
+            <div>
+                LastResponse UpLoad : {{reponseUpLoad}}
+            </div>
+        </md-tab-body>
+    </md-tab>
+
+</md-tabs>
+
